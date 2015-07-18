@@ -7,7 +7,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password password myr
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password myroot'
 
 sudo apt-get update
-sudo apt-get install -y php5-cli php5-gd php5-fpm php5-mysql php5-imagick imagemagick libssh2-php nginx mysql-server mysql-server-5.5 unzip
+sudo apt-get install -y php5-cli php5-gd php5-fpm php5-mysql php5-curl libssh2-php nginx mysql-server mysql-server-5.5 unzip
 
 cd $ROOT
 
