@@ -13,3 +13,4 @@ Session.vim
 
 #####=== Las Lechuzas configuration ===#####
 site/wp-config.php
+*.log
