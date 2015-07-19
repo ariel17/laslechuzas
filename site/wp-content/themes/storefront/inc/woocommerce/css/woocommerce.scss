@@ -45,8 +45,8 @@
 
 	.cart-contents {
 		display: block;
-		height: 2.244em;
-		width: 2.244em;
+		height: 0;
+		width: 0;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -138,7 +138,7 @@ ul.products {
 	li.product {
 		list-style: none;
 		margin-left: 0;
-		margin-bottom: 4.236em;
+		margin-bottom: 2em;
 		text-align: center;
 		position: relative;
 
@@ -376,7 +376,7 @@ ul.products {
  * Breadcrumbs
  */
 .woocommerce-breadcrumb {
-	margin-bottom: 4.236em;
+	margin-bottom: 2em;
 	font-size: .857em;
 	padding: 1em 0;
 	border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -1265,7 +1265,7 @@ dl.variation {
  */
 .storefront-product-section {
 	border-bottom: 3px solid rgba(0,0,0,0.025);
-	margin-bottom: 4.236em;
+	margin-bottom: 2em;
 
 	.section-title {
 		text-align: center;
@@ -1324,7 +1324,7 @@ dl.variation {
 		position: relative;
 
 		.cart-contents {
-			padding: 0 1em 2.244em;
+			padding: 0 1em 0;
 			display: block;
 			position: relative;
 			background-color: transparent;
