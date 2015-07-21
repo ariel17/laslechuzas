@@ -8,7 +8,7 @@ Version:      	1.4.6
 License:      	GNU General Public License v2 or later
 License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  	storefront
-Tags:         	black, white, light, two-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready
+Tags:         	black, white, light, two-columns, left-sideb, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -387,9 +387,6 @@ body {
     margin-bottom: 1.618em; }
   .site-header .widget {
     margin-bottom: 0; }
-
-.home.blog .site-header, .home.page:not(.page-template-template-homepage) .site-header, .home.post-type-archive-product .site-header {
-  margin-bottom: 2em; }
 
 .no-wc-breadcrumb .site-header {
   margin-bottom: 2em; }
@@ -1141,12 +1138,7 @@ fieldset {
   .hentry .wp-post-image {
     margin-bottom: 1.618em; }
   .hentry .entry-header {
-    border-bottom: 3px solid #60646c;
-    margin-bottom: 3.631em; }
-    .hentry .entry-header h1 {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-bottom: .618em;
-      margin-bottom: 3px; }
+    margin-bottom: 2em; }
     .hentry .entry-header .posted-on, .hentry .entry-header .byline {
       font-size: .857em; }
   .hentry .entry-meta a {
@@ -1587,10 +1579,14 @@ fieldset {
 h1.site-title {
   font-family: 'Euphoria Script', cursive;
   font-size: 10em;
+  letter-spacing: 10px;
 }
 
 h1.entry-title {
-  font-size: 4em;
+  font-family: 'Euphoria Script', cursive;
+  font-size: 6em;
+  text-align: center;
+  margin: 0;
 }
 
 div.site-branding {
@@ -1626,4 +1622,36 @@ nav.secondary-navigation {
 
 .site-header-cart {
   display: none;
+}
+
+#post-2 > header {
+  display: none;
+}
+
+.product-text {
+  text-align: center;
+  font-family: 'Euphoria Script', cursive;
+  font-size: 5em;
+  margin: 0;
+}
+
+.product-text-secondary {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 1.618em;
+}
+
+.product-text-middle {
+  text-align: justify;
+  font-size: 1.2em;
+  margin-bottom: 1.618em;
+}
+
+.product-text-footer {
+  font-size: 4em;
+  margin-bottom: 1.618em;
+}
+
+body > .site-header {
+  margin-bottom: 0;
 }
