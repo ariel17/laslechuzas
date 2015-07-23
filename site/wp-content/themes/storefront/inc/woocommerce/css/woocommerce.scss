@@ -376,17 +376,7 @@ ul.products {
  * Breadcrumbs
  */
 .woocommerce-breadcrumb {
-	font-size: .857em;
-	padding: 1em 0;
-
-	a.home {
-		&:before {
-			content: "\f015";
-			font-family: "FontAwesome";
-			font-weight: 400;
-			margin-right: .53em;
-		}
-	}
+    display: none;
 }
 
 /**

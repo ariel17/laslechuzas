@@ -1652,6 +1652,6 @@ nav.secondary-navigation {
   margin-bottom: 1.618em;
 }
 
-body > .site-header {
-  margin-bottom: 0;
+.site-header {
+  margin-bottom: 1em;
 }
