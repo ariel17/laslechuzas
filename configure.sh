@@ -6,11 +6,11 @@ CONFIG_DIR="$SITE/wp-config"
 CONFIG="$SITE/wp-config.php"
 
 case "$1" in
-    vagrant)
+    vagrant|production)
         config="$CONFIG_DIR/$1.php"
         ;;
     *)
-        echo "Usage: $0 {vagrant}" >&2
+        echo "Usage: $0 {vagrant|production}" >&2
         exit 1
         ;;
 esac
