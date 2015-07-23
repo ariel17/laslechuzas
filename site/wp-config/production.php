@@ -94,3 +94,4 @@ require_once(ABSPATH . 'wp-settings.php');
 
 define('WP_HOME', 'http://www.laslechuzas.com.ar/');
 define('WP_SITEURL', 'http://www.laslechuzas.com.ar/');
+define('FS_METHOD', 'direct');
