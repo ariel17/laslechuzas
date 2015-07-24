@@ -1622,7 +1622,7 @@ nav.secondary-navigation {
   display: none;
 }
 
-#post-2 > header {
+#post-2 > header, #post-9 > header {
   display: none;
 }
 
