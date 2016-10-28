@@ -1,0 +1,39 @@
+---
+version: '2.0'
+services:
+  db:
+    image: mysql:5.6
+    hostname: db
+    environment:
+      MYSQL_ROOT_PASSWORD: "ff4131c1a74f938adc1f1514a2a9f6677f527db5"
+      MYSQL_DATABASE: "laslechuzas"
+      MYSQL_USER: "laslechuzas"
+      MYSQL_PASSWORD: "fd11c55f5d3607ccc166398d8066ac6969fc650a"
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  fpm:
+    build: docker/fpm
+    hostname: fpm
+    environment:
+      DB_NAME: "laslechuzas"
+      DB_USER: "laslechuzas"
+      DB_PASSWORD: "fd11c55f5d3607ccc166398d8066ac6969fc650a"
+      DB_HOST: "db"
+      WP_DEBUG: "true"
+    volumes:
+      - "./WordPress:/srv/laslechuzas/site"
+    links:
+      - db:db
+  
+  web:
+    build: ./docker/web
+    hostname: web
+    volumes_from:
+      - fpm
+    ports:
+      - "80:80"
+    links:
+      - fpm:fpm

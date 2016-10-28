@@ -8,9 +8,5 @@ Session.vim
 .netrwhist
 *~
 
-#####=== Vagrant ===#####
-.vagrant/
-
-#####=== Las Lechuzas configuration ===#####
-site/wp-config.php
-*.log
+#####=== Docker ===#####
+docker/db/data
