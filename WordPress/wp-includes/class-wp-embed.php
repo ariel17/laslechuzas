@@ -35,6 +35,7 @@ class WP_Embed {
 
 		// After a post is saved, cache oEmbed items via AJAX
 		add_action( 'edit_form_advanced', array( $this, 'maybe_run_ajax_cache' ) );
+		add_action( 'edit_page_form', array( $this, 'maybe_run_ajax_cache' ) );
 	}
 
 	/**
@@ -59,7 +60,7 @@ class WP_Embed {
 		add_shortcode( 'embed', array( $this, 'shortcode' ) );
 
 		// Do the shortcode (only the [embed] one is registered)
-		$content = do_shortcode( $content );
+		$content = do_shortcode( $content, true );
 
 		// Put the original shortcodes back
 		$shortcode_tags = $orig_shortcode_tags;
@@ -232,12 +233,13 @@ class WP_Embed {
 			 * Filter whether to inspect the given URL for discoverable link tags.
 			 *
 			 * @since 2.9.0
+			 * @since 4.4.0 The default value changed to true.
 			 *
 			 * @see WP_oEmbed::discover()
 			 *
-			 * @param bool $enable Whether to enable `<link>` tag discovery. Default false.
+			 * @param bool $enable Whether to enable `<link>` tag discovery. Default true.
 			 */
-			$attr['discover'] = ( apply_filters( 'embed_oembed_discover', false ) && author_can( $post_ID, 'unfiltered_html' ) );
+			$attr['discover'] = ( apply_filters( 'embed_oembed_discover', true ) );
 
 			// Use oEmbed to get the HTML
 			$html = wp_oembed_get( $url, $attr );
@@ -271,7 +273,7 @@ class WP_Embed {
 		if ( empty($post_metas) )
 			return;
 
-		foreach( $post_metas as $post_meta_key ) {
+		foreach ( $post_metas as $post_meta_key ) {
 			if ( '_oembed_' == substr( $post_meta_key, 0, 8 ) )
 				delete_post_meta( $post_ID, $post_meta_key );
 		}
@@ -318,7 +320,14 @@ class WP_Embed {
 	 * @return string Potentially modified $content.
 	 */
 	public function autoembed( $content ) {
-		return preg_replace_callback( '|^(\s*)(https?://[^\s"]+)(\s*)$|im', array( $this, 'autoembed_callback' ), $content );
+		// Replace line breaks from all HTML elements with placeholders.
+		$content = wp_replace_in_html_tags( $content, array( "\n" => '<!-- wp-line-break -->' ) );
+
+		// Find URLs that are on their own line.
+		$content = preg_replace_callback( '|^(\s*)(https?://[^\s"]+)(\s*)$|im', array( $this, 'autoembed_callback' ), $content );
+
+		// Put the line breaks back.
+		return str_replace( '<!-- wp-line-break -->', "\n", $content );
 	}
 
 	/**

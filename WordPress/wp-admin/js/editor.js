@@ -236,7 +236,7 @@
 			// Protect pre|script tags
 			if ( text.indexOf( '<pre' ) !== -1 || text.indexOf( '<script' ) !== -1 ) {
 				preserve_linebreaks = true;
-				text = text.replace( /<(pre|script)[^>]*>[\s\S]+?<\/\1>/g, function( a ) {
+				text = text.replace( /<(pre|script)[^>]*>[\s\S]*?<\/\1>/g, function( a ) {
 					return a.replace( /\n/g, '<wp-line-break>' );
 				});
 			}
@@ -272,7 +272,13 @@
 			text = text.replace( /<\/blockquote>\s*<\/p>/gi, '</p></blockquote>');
 			text = text.replace( new RegExp( '<p>\\s*(</?(?:' + blocklist + ')(?: [^>]*)?>)', 'gi' ), '$1' );
 			text = text.replace( new RegExp( '(</?(?:' + blocklist + ')(?: [^>]*)?>)\\s*</p>', 'gi' ), '$1' );
-			text = text.replace( /\s*\n/gi, '<br />\n');
+
+			// Remove redundant spaces and line breaks after existing <br /> tags
+			text = text.replace( /(<br[^>]*>)\s*\n/gi, '$1' );
+
+			// Create <br /> from the remaining line breaks
+			text = text.replace( /\s*\n/g, '<br />\n');
+
 			text = text.replace( new RegExp( '(</?(?:' + blocklist + ')[^>]*>)\\s*<br />', 'gi' ), '$1' );
 			text = text.replace( /<br \/>(\s*<\/?(?:p|li|div|dl|dd|dt|th|pre|td|ul|ol)>)/gi, '$1' );
 			text = text.replace( /(?:<p>|<br ?\/?>)*\s*\[caption([^\[]+)\[\/caption\]\s*(?:<\/p>|<br ?\/?>)*/gi, '[caption$1[/caption]' );

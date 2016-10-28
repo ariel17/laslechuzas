@@ -3,8 +3,8 @@
  * Admin options screen - changes loco plugin settings
  */
 $nav = array (
-    Loco::__('Packages') => LocoAdmin::uri(),
-    Loco::__('Settings') => '',
+    Loco::__('Packages') => array( 'href' => LocoAdmin::uri() ),
+    Loco::__('Settings') => array( 'icon' => 'admin-settings' ),
 ); 
 ?>
 
@@ -54,6 +54,12 @@ $nav = array (
                                     <?php Loco::h( Loco::__('Generate hash tables') )?> 
                                 </label>
                             </p>
+                            <p>
+                                <label for="loco--use-fuzzy">
+                                    <input type="checkbox" name="loco[use_fuzzy]" value="1" id="loco--use-fuzzy"<?php echo $use_fuzzy ? ' checked' : '';?> />
+                                    <?php Loco::h( Loco::__('Include Fuzzy strings') )?> 
+                                </label>
+                            </p>
                         </fieldset>
                     </td>
                 </tr>
@@ -83,7 +89,7 @@ $nav = array (
                             <p>
                                 <label for="loco--enable-core">
                                     <input type="checkbox" name="loco[enable_core]" value="1" id="loco--enable-core"<?php echo $enable_core ? ' checked' : '';?> />
-                                    <?php Loco::h( Loco::__('Enable Wordpress core translations') )?> 
+                                    <?php Loco::h( Loco::__('Enable WordPress core translations') )?> 
                                 </label>
                             </p>
                         </fieldset>
@@ -93,7 +99,7 @@ $nav = array (
         </table>
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php Loco::h( Loco::__('Save settings') )?>" />
-            <a class="button" href="http://wordpress.org/support/plugin/<?php echo Loco::NS?>" target="_blank"><?php Loco::h( Loco::__('Get help') )?></a>
+            <a class="button" href="https://localise.biz/help/wordpress/translate-plugin/support" target="_blank"><?php Loco::h( Loco::__('Get help') )?></a>
         </p>
     </form>
     

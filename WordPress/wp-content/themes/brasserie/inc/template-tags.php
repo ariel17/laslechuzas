@@ -173,3 +173,70 @@ function brasserie_category_transient_flusher() {
 }
 add_action( 'edit_category', 'brasserie_category_transient_flusher' );
 add_action( 'save_post', 'brasserie_category_transient_flusher' );
+
+
+/**
+ * Display Header Cart
+ * @since  1.0.0
+ * @uses  is_woocommerce_activated() check if WooCommerce is activated
+ * @return void
+ */
+if ( ! function_exists( 'brasserie_header_cart' ) ) {
+	function brasserie_header_cart() {
+		if ( is_woocommerce_activated() ) {
+			if ( is_cart() ) {
+				$class = 'current-menu-item';
+			} else {
+				$class = '';
+			}
+		?>
+		<ul class="site-header-cart menu">
+			<li class="<?php echo esc_attr( $class ); ?>">
+				<?php brasserie_cart_link(); ?>
+			</li>
+		</ul>
+		<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+		<?php
+		}
+	}
+}
+/**
+ * Display Header Cart
+ * @since  1.0.0
+ * @uses  is_woocommerce_activated() check if WooCommerce is activated
+ * @return void
+ */
+if ( ! function_exists( 'brasserie_mini_cart' ) ) {
+	function brasserie_mini_cart() {
+		if( is_woocommerce_activated() ){
+		?>
+			<li class="cart-link">
+				<?php brasserie_cart_link(); ?>
+				<?php
+					if ( is_woocommerce_activated() ) {
+						the_widget( 'WC_Widget_Cart', 'title=' );
+					}
+				?>
+			</li>
+		<?php
+		}
+	}
+}
+
+/**
+ * Cart Link
+ * Displayed a link to the cart including the number of items present and the cart total
+ * @param  array $settings Settings
+ * @return array           Settings
+ * @since  1.0.0
+ */
+if ( ! function_exists( 'brasserie_cart_link' ) ) {
+	function brasserie_cart_link() {
+		?>
+			<a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'brasserie' ); ?>">
+				<?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?> <span class="amount"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'brasserie' ), WC()->cart->get_cart_contents_count() ) );?></span>
+				<i class="fa fa-shopping-cart"></i>
+			</a>
+		<?php
+	}
+}

@@ -13,9 +13,10 @@ if ($fb_user) {
   	$logoutUrl = $woosocio -> facebook -> getLogoutUrl( $next_url );
 	$user_profile = $woosocio -> facebook -> api('/me');
 	$user_pages = $woosocio -> facebook -> api("/me/accounts");
+	$user_groups = $woosocio -> facebook -> api("/me/groups");
 } else {
   	$statusUrl = $woosocio->facebook->getLoginStatusUrl();
-  	$loginUrl = $woosocio->facebook->getLoginUrl(array('scope' => 'manage_pages, publish_actions'));
+  	$loginUrl = $woosocio->facebook->getLoginUrl(array('scope' => 'manage_pages, publish_actions, publish_pages, user_photos, user_managed_groups'));
 }
 
 ?>
@@ -90,6 +91,18 @@ if ($fb_user) {
 	  			</td>
 	  		</tr>
             </table>
+			<iframe 
+            	src="https://player.vimeo.com/video/155268223" 
+                width="500" 
+            	height="282" 
+                frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+            </iframe> 
+			<p>
+            	<a href="https://vimeo.com/155268223">How to create Facebook app for WooSocio</a>
+                from <a href="https://vimeo.com/user48932448">Qamar Sheeraz</a>
+                on <a href="https://vimeo.com">Vimeo</a>.
+            </p>            
+            
             </div>
 		</div>
 	
@@ -98,35 +111,75 @@ if ($fb_user) {
 			$user_sign = $user_profile['id'].'_fb_page_id';
 			//echo get_option( $user_sign);
 			$fb_page_value = get_option( $user_sign, $user_profile['id'] );
+			//$this->pa($user_groups);
             echo "<h4>" . __( 'Post to:', 'woosocio' ) . "</h4>";
+			echo "<h3>" . __( 'Pages:', 'woosocio' ) . "</h3>";
         ?>
             <img src="http://graph.facebook.com/<?php echo $user_profile['id'] ?>/picture" alt="No Image">
-            <input type="radio" name="pages" value="<?php echo $user_profile['id'] ?>" <?php echo ($fb_page_value == $user_profile['id'])?'checked':''?>><?php _e('Personal Page (Wall)', 'woosocio') ?><br>
+            <input type="radio" name="pages" value="<?php echo $user_profile['id'] ?>" <?php echo (reset($fb_page_value) == $user_profile['id'])?'checked':''?>><?php _e('Personal Page (Wall)', 'woosocio') ?><br>
+            <input type="hidden" id="<?php echo $user_profile['id'] ?>" value="me">
         <?php
         $page_names = $user_pages['data'];
         foreach($page_names as $key => $page)
         {
         ?>
             <img src="http://graph.facebook.com/<?php echo $page['id'] ?>/picture" alt="No Image">
-            <input type="radio" name="pages" value="<?php echo $page['id'] ?>" <?php echo ($fb_page_value == $page['id']) ? 'checked':''?>><?php echo $page['name'] ?><br>
+            <input type="radio" name="pages" value="<?php echo $page['id'] ?>" <?php echo (reset($fb_page_value) == $page['id']) ? 'checked':''?>><?php echo $page['name'] ?><br>
+            <input type="hidden" id="<?php echo $page['id'] ?>" value="page">
         <?php
-        }}	//$woosocio->pa($user_profile);		 
-        ?>
+        }	//$woosocio->pa($user_profile);		 
+		echo "<h3>" . __( 'Groups:', 'woosocio' ) . "</h3>";
+        $group_names = $user_groups['data'];
+        foreach($group_names as $key => $group)
+        {
+		?>
+            <img src="http://graph.facebook.com/<?php echo $group['id'] ?>/picture" alt="No Image">
+            <input type="radio" name="pages" value="<?php echo $group['id'] ?>" <?php echo (reset($fb_page_value) == $group['id']) ? 'checked':''?>><?php echo $group['name'] ?><br>
+            <input type="hidden" id="<?php echo $group['id'] ?>" value="group">
+        <?php
+        }
+		}	//$woosocio->pa($user_profile);	
+		?>
         <img id="working-page" src="<?php echo $woosocio->assets_url.'/spinner.gif' ?>" alt="Wait..." height="15" width="15" style="display: none;"><br>
 	</div>        
     
+    
+    <?php
+	if($fb_user!==0){
+		echo '<div class="woosocio-service-entry" style="font-size:18px;">';
+		/*
+			Check permissions
+		*/
+		$arr_permissions = $woosocio -> facebook -> api("/me/permissions");
+		//$this->pa($arr_permissions['data']);
+		echo "<h4>" . __( 'App Permissions:', 'woosocio' ) . "</h4>";
+		echo '<table>';
+		
+		foreach ( $arr_permissions['data'] as $permission ) {
+			echo '<tr>';
+			echo '<td>' . $permission['permission'] . '</td>';
+			echo '<td>' . $permission['status']     . '</td>';
+			echo '</tr>';
+		}
+		echo '</table>';
+    	echo '</div>';
+	}
+	?>
+
     <div class="woosocio-service-entry" style="font-size:18px; color:#03C">
     <?php
-        _e('* WooSocio Pro version *', 'woosocio'); echo "</br></br>";
-		_e('* Post as page owner rather highlighted post.', 'woosocio'); echo "</br>";
-		_e('* post to multiple pages at once.', 'woosocio'); echo "</br>";
-		_e('* Post products multiple times (Post more than once)', 'woosocio'); echo "</br>";
-		_e('* Bulk posts to pages (multiple posts at once)', 'woosocio'); echo "</br>";
-		_e('* Bulk edit message', 'woosocio'); echo "</br>";
+        echo '<a href="http://genialsouls.com/product/woosocio-pro/" target="_top">'.__('* WooSocio Pro version *', 'woosocio').'</a>';
+		echo "</br></br>";
+		_e('* Post on page as page owner (post from page)', 'woosocio'); echo "</br>";
+		_e('* post to multiple pages and/or groups at once', 'woosocio'); echo "</br>";
+		_e('* post products with optional time delay between posting', 'woosocio'); echo "</br>";
+		_e('* Post products multiple times (on every update)', 'woosocio'); echo "</br>";
+		_e('* Bulk posts to pages, groups (multiple posts at once)', 'woosocio'); echo "</br>";
+		_e('* Add Facebook like/share buttons on product page', 'woosocio'); echo "</br>";
+		_e('* Multi user ready', 'woosocio'); echo "</br>";
 		_e('* Bulk like/share button on/off option', 'woosocio'); echo "</br>";
 		_e('* Rich product page', 'woosocio'); echo "</br>";
 		_e('* And many more to come...', 'woosocio'); echo "</br>";
-        
 	?>
     </div>
     <div class="woosocio-service-entry" style="font-size:18px; color:#03D">
@@ -142,12 +195,11 @@ if ($fb_user) {
 		_e('* And many more...', 'woosocio'); echo "</br>";
         
 	?>
-    <br><a href="http://genialsouls.com/file-manager/" title="http://genialsouls.com">Visit our site for details</a><br><br>
+    <br><a href="http://genialsouls.com/file-manager/" title="http://genialsouls.com"><?php _e('Visit our site for details', 'woosocio');?></a><br><br>
     </div>
   </div>
     <!-- Right Area Widgets -->  
     <?php 
-		//include('http://genialsouls.com/downloads/right_area.inc');
 		include_once 'right_area.php';
 	 ?>
     <!-- Right Area Widgets -->  
@@ -177,10 +229,11 @@ jQuery(document).ready(function($){
 
 	$("input:radio[name=pages]").click(function() {
 		$("#working-page").show();
-			
+
 		var data = {
 			action: 'update_page_info',
-			fb_page_id: $(this).val()
+			fb_page_id: $(this).val(),
+			fb_type: $("#"+$(this).val()).val()
 		};
 		
 		$.post(ajaxurl, data, function(response) {

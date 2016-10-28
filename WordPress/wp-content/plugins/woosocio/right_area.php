@@ -1,7 +1,7 @@
     <div class="woosocio-about-us">
     	<!-- Pro version of WooSocio -->
         <div class="box" align="center" style="font-family:'Times New Roman', Times, 'serif'; font-size:18px; background-color:#0F0">
-			<a href="http://genialsouls.com/product/woosocio-pro/" target="_top">WooSocio Pro is here</a>
+			<a href="http://genialsouls.com/product/woosocio-pro/" target="_top"><?php _e( 'WooSocio Pro is here', 'woosocio') ?></a>
 		</div>
     	<!-- Like Box WooSocio on Facebook -->
         <div class="box">
@@ -59,7 +59,7 @@
 		</div>
         <div class="box" align="center" style="font-family:'Times New Roman', Times, 'serif'; font-size:18px">
         	<?php _e('Need more help? Please contact: ', 'woosocio') ?>
-            <a href="mailto:qsheeraz@yahoo.com?Subject=WooSocio%20Help" target="_top">qsheeraz@yahoo.com</a><br />
+            <a href="mailto:qsheeraz@yahoo.com?Subject=WooSocio%20Help" target="_top">info@genialsouls.com</a><br />
             <a href="http://genialsouls.com/" target="_top">Or visit our site http://genialsouls.com</a><br />
             <a href="http://genialsouls.com/contact-us/" target="_top">Contact Us</a>
         </div>

@@ -23,7 +23,7 @@ class LocalesTest extends PHPUnit_Framework_TestCase {
     }
     
     
-    public function testValidWordpressLocales(){
+    public function testValidWordPressLocales(){
         // regionless
         $this->assertTrue( LocoLocale::is_valid_wordpress('th'), '"th" should be a valid WP locale ' );
         $this->assertFalse( LocoLocale::is_valid_wordpress('th_TH'), 'th_TH is not valid, it should be "th"' );
@@ -89,9 +89,9 @@ class LocalesTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals( 'ca', $locale->get_code() );
     }
     
-    public function testRegionlessLocaleHasFlag(){
+    public function testRegionlessLocaleHasFlagClass(){
         $locale = LocoLocale::init('th', null );
-        $this->assertEquals( 'flag flag-th', $locale->icon_class() );        
+        $this->assertContains( 'flag flag-th', $locale->icon_class() );        
     }
     
     

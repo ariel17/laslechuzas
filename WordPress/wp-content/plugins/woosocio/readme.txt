@@ -1,29 +1,33 @@
 === WooSocio ===
 Contributors: qsheeraz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YNF4H9FJY4HU4
-Tags: woo, social, facebook, posts, products, share, auto upload, sharing, social media, social media sharing, social share, socialmedia, woocommerce, woo products, woo products sharing, auto share, woo sharing, woo social sharing, publicize woo products, like, like share button, facebook pages, fan page
+Tags: woo, social, facebook, posts, products, share, auto upload, sharing, social media, social media sharing, social share, socialmedia, woocommerce, woo products, woo products sharing, auto share, woo sharing, woo social sharing, publicize woo products, like, like share button, facebook pages, fan page, groups
 Requires at least: 3.0.1
-Tested up to: 4.2.2
-Stable tag: 0.7.1
+Tested up to: 4.4
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will upload/post your Woocommerce products to facebook wall as well as facebook fan pages automatically, when published. Also adds like/share buttons in Woo products.
+Uploads/post your Woocommerce products to facebook wall, fan pages and groups on publish automatically. Also adds like/share buttons in Woo products.
 
 == Description ==
 
 This is a simple plugin for your woocommerce site to upload/post your products to social media (currently facebook only) 
-automatically. It will do the magic when you publish new product through woocommerce. It will be shared to your facebook friends, followers through your wall or pages.
+automatically. It will do the magic when you publish new product through woocommerce. It will be shared to your facebook friends, followers through your wall or pages and on your facebook groups.
 You can also add like/share buttons to your woo products and get more traffic.
 
-* WooSocio Pro version *
-* Post as page owner rather highlighted post.
-* post to multiple pages at once.
-* Post products multiple times (Post more than once)
-* Bulk posts to pages (multiple posts at once)
+* WooSocio Pro version features *
+* Post products on Facebook wall, pages and groups
+* Post on page as page owner (post from page)
+* post to multiple pages and/or groups at once
+* post products with optional time delay between posting
+* Post products multiple times (on every update)
+* Bulk posts to pages, groups (multiple posts at once)
+* Add Facebook like/share buttons on product page
 * Bulk like/share button on/off option
-* Rich product page
-* And many more to come...
+* Multi user ready
+* Rich products page
+* And many more to come…
 
 == Installation ==
 
@@ -78,7 +82,50 @@ No. You can use like/share buttons without connecting to facebook. But it is rec
 
 5. screenshot-5.jpg
 
+6. screenshot-6.jpg
+
 == Changelog ==
+
+= 1.1.1 - 26/02/2016 =
+
+* Fixed: Bug fixed for posting on pages. App V2.3+
+
+= 1.1 - 16/02/2016 =
+
+* New: Now post product as picture or link
+* New: Product price and content added in posting
+* New: Video help, how to create Facebook App
+* Modify: Options page layout
+* Fixed: Some minor bugs fixed
+
+= 1.0 - 12/01/2016 =
+
+* A Pro feature is free now.
+* --Post as page owner (post from page)
+* --Full post (no more highlighted post)
+* Update: Shop managers can also access the plugin along with admins.
+* Fixed: Menue position.
+* Fixed: Options page layout.
+* Fixed: Some minor bugs fixed.
+
+= 0.8.2 - 13/10/2015 =
+
+* Added: Clear Facebook cache after post.
+         (Wrong image issue)
+
+= 0.8.1 - 12/09/2015 =
+
+* Fixed: Error fixed for apps having api version v2.4
+
+= 0.8.0 - 10/09/2015 =
+
+* Added: New Feature: Post on facebook groups.
+* Update: Translation updated.
+
+= 0.7.2 - 25/07/2015 =
+
+* Added: View permissions granted to your facebook App.
+* Update: Translation updated.
 
 = 0.7.1 - 18/05/2015 =
 
@@ -155,10 +202,4 @@ No. You can use like/share buttons without connecting to facebook. But it is rec
 
 == Upgrade Notice ==
 
-= 0.6.2 =
-
-== Arbitrary section ==
-
-
-== A brief Markdown Example ==
-
+= 0.8.2 =

@@ -1673,3 +1673,7 @@ nav.secondary-navigation {
     padding-right: 20px;
     vertical-align: middle;
 }
+
+.woocommerce-active .site-header .main-navigation {
+    width: 100%;
+}

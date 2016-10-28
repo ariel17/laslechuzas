@@ -3,12 +3,12 @@ Theme Name: Brasserie
 Theme URI: http://www.templateexpress.com/brasserie-theme/
 Author: Template Express
 Author URI: http://www.templateexpress.com/
-Description: Brasserie is a full-width, fully responsive and highly customizable WordPress Theme. Add your own logo, header, featured areas, social media links and much more. This versatile theme also has several different layouts, unlimited colors google font options. Brasserie looks great on devices of all sizes.
-Version: 1.3
+Description: Brasserie is a full-width, fully responsive and highly customizable WordPress Theme. This Restaurant theme is WooCommerce Supported. Add your own logo, header, featured areas, social media links and much more. This versatile theme also has several different layouts, unlimited colors google font options. Brasserie looks great on devices of all sizes.
+Version: 1.9.1
 License: GNU General Public License v2.0
 License URI: ​http://www.gnu.org/licenses/gpl-2.0.html
 Tags: light, white, one-column, two-columns, right-sidebar, fluid-layout, custom-header, custom-menu, featured-images, flexible-header, microformats, post-formats, rtl-language-support, threaded-comments, translation-ready, theme-options, full-width-template, black, responsive-layout, white, left-sidebar, right-sidebar
-
+Text Domain: brasserie
 This theme, like WordPress, is licensed under the GPL.
 
 Resetting and rebuilding styles have been helped along thanks to the fine work of
@@ -24,7 +24,7 @@ _s ("Underscores") WordPress Theme is distributed under the terms of the GNU GPL
 */
 
 /*
-Brasserie WordPress Theme, Copyright 2015 Ossie Heffell
+Brasserie WordPress Theme, Copyright 2016 Ossie Heffell
 Brasserie is distributed under the terms of the GNU GPL
 */
 
@@ -1079,7 +1079,8 @@ a.more-link:hover {
 	margin: 0 auto;
 	max-width: 1140px;
 }
-.page-title {
+.page-title,
+body.woocommerce-page .title-container .page-title {
 	font-size: 28px;
     font-size: 2.8rem;
 	margin: 0 auto;
@@ -1464,7 +1465,7 @@ li.pingback {
 	font-size: 1.3rem;
 	margin: 1em 0 0 4.5em;
 }
-.reply { 
+.comment .reply { 
 	float:right;
 	margin:0 10px 10px 0;
 	text-align:center;
@@ -1646,6 +1647,15 @@ p.nocomments {
 	top: 8px;
 	right: 0;
 }
+.withCart .social-media,
+.top-bar-mini-cart{
+	float: right;
+	margin-left: 2em;
+}
+.top-bar-mini-cart ul{
+	margin: 0;
+	padding-right: 14px;
+}
 .social-media li {
 	float: right;
 	position: relative;
@@ -1663,6 +1673,25 @@ p.nocomments {
 }
 .social-media a i {
 	font-size:1em;	
+}
+/* Cart Link
+------------------------------------------------------- */
+.top-bar-mini-cart .cart-contents{
+	padding-top: 8px;
+	min-width: 250px;
+	display: block;
+}
+.top-bar-mini-cart .widget_shopping_cart{
+	background: #fff;
+	padding: 1em;
+	display: none;
+	position: absolute;
+	min-width: 250px;
+	z-index:999;
+	border: 4px solid #EFEFEF;
+}
+.top-bar-mini-cart .cart-link:hover .widget_shopping_cart{
+	display: block;
 }
 /* Search
 ------------------------------------------------------ */
@@ -1930,7 +1959,9 @@ filter: alpha(opacity=90);
 .slides cite {
 	font-style: italic;
 }
-
+.flex-viewport {
+	direction: ltr;
+}
 /* Client Ad Styles */
 
 .client {
@@ -1951,6 +1982,14 @@ filter: alpha(opacity=90);
 
 .client img{
 	max-width: 100%;
+}
+
+/* BBPress */
+#bbpress-forums div.bbp-the-content-wrapper textarea.bbp-the-content{
+	border: 1px solid #ccc;
+}
+div.bbp-submit-wrapper{
+	float: none;
 }
 			
 /* CUSTOM HOMEPAGE LAYOUT */
@@ -2164,6 +2203,50 @@ body.home .header-image img {
 }
 
 /************************************************************************************
+WOOCOMMERCE STYLES
+*************************************************************************************/
+.woocommerce div.product .product_title {
+    padding: 2px 14px;
+    border-radius: 0.1em;
+    position: relative;
+    top: 0;
+    margin-bottom: 14px;
+}
+.woocommerce .quantity .qty {
+    padding: 6px;
+}
+.woocommerce-checkout #payment ul.payment_methods li {
+    list-style: none;
+}
+.woocommerce .woocommerce-ordering select {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0 1.538em 0 0.75em;
+    color: #666;
+    margin-bottom: 0;
+	height: 34px;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    text-align: center;
+}
+.woocommerce ul.products li.product .star-rating, .woocommerce ul.products li.product .button {
+    display: inline-block;
+    float: none;
+}
+.woocommerce .entry-content, .woocommerce .entry-summary {
+    margin-top: 0;
+}
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+	border-radius: 3px;
+}
+.woocommerce div.product .product_title {
+	padding: 0;
+}
+/************************************************************************************
 MEDIA QUERIES
 *************************************************************************************/
 /* for 1000px or less */
@@ -2223,6 +2306,7 @@ MEDIA QUERIES
 	#topbar_container {
 		height:auto;
 		min-height: 40px;
+		border-bottom: 0;
 	}
 	
 	.topbar_content_left span {

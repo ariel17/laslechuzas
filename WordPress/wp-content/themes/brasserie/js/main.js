@@ -64,8 +64,12 @@
 	
 	
 	// accordion style navigation for small screens.
+	var $window = $(window);
+	var windowsize = $window.width();
 	$('.page_item_has_children > a, .menu-item-has-children > a').on('click', function(e){
-		e.preventDefault();
+		if (windowsize < 1000) {
+			e.preventDefault();
+		}
 		var clickedLink = $(this);
 		clickedLink.toggleClass('open');
 		var child = clickedLink.siblings('ul');

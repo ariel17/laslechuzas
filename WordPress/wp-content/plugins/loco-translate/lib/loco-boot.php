@@ -9,7 +9,7 @@ abstract class Loco {
     const NS = 'loco-translate';
 
     /** plugin version */ 
-    const VERSION = '1.5.1';
+    const VERSION = '1.5.5';
     
     /* current plugin locale */
     private static $locale;
@@ -20,17 +20,17 @@ abstract class Loco {
     /* whether to enable the cache at all  */
     public static $cache_enabled;
 
-    /* call Wordpress __ with our text domain  */
+    /* call WordPress __ with our text domain  */
     public static function __( $msgid = '' ){
         return __( $msgid, self::NS );
     }
 
-    /* call Wordpress _n with our text domain  */
+    /* call WordPress _n with our text domain  */
     public static function _n( $msgid = '', $msgid_plural = '', $n = 0 ){
         return _n( $msgid, $msgid_plural, $n, self::NS );
     }
 
-    /* call Wordpress _x with our text domain  */
+    /* call WordPress _x with our text domain  */
     public static function _x( $msgid = '', $msgctxt = '', $n = 0 ){
         return _x( $msgid, $msgctxt, self::NS );
     }
@@ -77,10 +77,9 @@ abstract class Loco {
         $here = __FILE__;
         if( 0 !== strpos( WP_PLUGIN_DIR, $here ) ){
             // something along this path has been symlinked into the document tree
-            // temporary measure assumes name of plugin folder is unchanged.
-            $here = WP_PLUGIN_DIR.'/'.Loco::NS.'/loco.php';
+            $name = basename( dirname( dirname($here) ) );
+            $here = WP_PLUGIN_DIR.'/'.$name.'/lib/loco-boot.php';
         }
-        //var_dump( $here );
         return $here;
     }     
     
@@ -90,7 +89,7 @@ abstract class Loco {
      */
     public static function basedir(){
         static $dir;
-        isset($dir) or $dir = dirname( self::__file() );
+        isset($dir) or $dir = dirname( dirname( self::__file() ) );
         return $dir;    
     }
     
@@ -100,7 +99,7 @@ abstract class Loco {
      */
     public static function baseurl(){
         static $url;
-        isset($url) or $url = plugins_url( '', self::__file() );
+        isset($url) or $url = plugins_url( '', self::basedir().'/loco.php' );
         return $url;
     }
     
@@ -187,20 +186,20 @@ abstract class Loco {
     
     
     /**
-     * Get actual postdata, not hacked postdata Wordpress ruined with wp_magic_quotes
+     * Get actual postdata, not hacked postdata WordPress ruined with wp_magic_quotes
      * @return array
      */
     public static function postdata(){
         static $post;
         if( ! is_array($post) ){
-            // Not using Wordpress's hacked POST collection.
+            // Not using WordPress's hacked POST collection.
             $str = file_get_contents('php://input') or 
             // preferred way is to parse original data
             $str = isset($_SERVER['HTTP_RAW_POST_DATA']) ? $_SERVER['HTTP_RAW_POST_DATA'] : '';
             if( $str ){
                 parse_str( $str, $post );
             }
-            // fall back to undoing Wordpress 'magic'
+            // fall back to undoing WordPress 'magic'
             else {
                 $post = stripslashes_deep( $_POST );
             }
@@ -290,8 +289,10 @@ abstract class Loco {
                 'use_msgfmt' => false,
                 // which external msgfmt command to use
                 'which_msgfmt' => '',
-                // whether to compile hash table into mo files
+                // whether to compile hash table into MO files
                 'gen_hash' => '0',
+                // whether to include Fuzzy strings in MO files
+                'use_fuzzy' => '1',
                 // number of backups to keep of PO and MO files
                 'num_backups' => '1',
                 // whether to enable core package translation
@@ -319,7 +320,7 @@ abstract class Loco {
 
 
     /**
-     * Get Wordpress capability for all Loco Admin functionality
+     * Get WordPress capability for all Loco Admin functionality
      */
     public static function admin_capablity(){
         return apply_filters( 'loco_admin_capability', 'manage_options' );

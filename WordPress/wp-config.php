@@ -20,16 +20,18 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', getenv('DB_NAME'));
+//define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/home/laslechuzas/site/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
+define('DB_NAME', 'laslechuzas');
 
 /** MySQL database username */
-define('DB_USER', getenv('DB_USER'));
+define('DB_USER', 'laslechuzas');
 
 /** MySQL database password */
-define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_PASSWORD', 'p3p4p111g#');
 
 /** MySQL hostname */
-define('DB_HOST', getenv('DB_HOST'));
+define('DB_HOST', 'db');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -46,14 +48,15 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'Z(a*-O|sjkb+oz6K:r9y<Yo(P(B>Ytq]DU.+DM_D$6h7 Rgt!]*]+B,vRDv{FwwA');
-define('SECURE_AUTH_KEY',  '<NVPrJL|&<^MLnXU-E:WLaG/6#.0H5v1r|VpN,j_a`k<2VI;-&ODb 3QUOK!A?wu');
-define('LOGGED_IN_KEY',    'a0oABrm-C9ap>)[?e7OPc02lXJO[ k438&qrT)o;MlZP9OwvESs6Bq^UP2 G`tIH');
-define('NONCE_KEY',        'dh:)hcN6@|0{3 9yPVaXe+-[xH?KHSF=LGrI^;4Oo$w&_eFOHV[& bCyR9_!rrX_');
-define('AUTH_SALT',        'P;hn%dt5W=R?U.Lh5@inb39-V@,n^1v+W>!F@F.EqeW$:RlP_`mo6L[~SBqcv]-(');
-define('SECURE_AUTH_SALT', '9jo/UMirxS#jn:uUC&rmgN|>1m]5eW[4s@:3xN?!CL--(j<*fqF:c|Ii|`QP$s?P');
-define('LOGGED_IN_SALT',   '9ZY<,SPBx%aR#H`!-hVPOmQ+2x P#f%_g=i|aIdIx)+9_0dm}> S$La!,%d)zubG');
-define('NONCE_SALT',       ':wzQk|~5(r=(*BI/?#0<+Eus4@mIEYXxs!FbTr~h2a?3uQ3Qc9v=Xu 9=Hm8WQs}');
+define('AUTH_KEY',         '[$`1[roKl+Cfeo}drR%xk(jLc:y&8{Hc$HIa-=&;+B+F.}D5BK|xUU@Eg-,8)-cg');
+define('SECURE_AUTH_KEY',  ']h<*B#lc_lH#kxJ!25q-I/EJfr[vM3pJ7q$k]hGmP@>Qyg `H}m1x@>|!n2M2G6.');
+define('LOGGED_IN_KEY',    'UO5+@L%Z~9wW~*&23Jz{`SA%&]l@Irq_|kF&h>.c?T*K?,Hg<?|UM@>i2L8G<,ZU');
+define('NONCE_KEY',        'f3}03=0:+}(OZj|7gT,&9wpFZI4d( L=gcAb0,^TGX*hZ[-<D _5fSyg|>|aKxjw');
+define('AUTH_SALT',        'i<S`X>64j$df{)et6<+c>vNf-PvPF+0FJC^|$|e;3]<5[VRV9T6|bjIE+7|8)ll#');
+define('SECURE_AUTH_SALT', 'UK<W/fv0&-GW~@k(8V6Jq:sy$r~cfrtK:=w+N4Z>` 0-NVy4O{fi,Dpy@/n@vm9b');
+define('LOGGED_IN_SALT',   'z-h[@w)y0jM/K5|Q$YjAH)Gt|m5vkxSt:ajpI5q__Kzk<ETZ +SGLZ:B&DV#z.Li');
+define('NONCE_SALT',       'SAjkzXidQmPm19lhvCyW+wt-!!2bK+DsR6@b{kT],qeb)DkW31N#R._l/I@l ?{~');
+
 
 /**#@-*/
 
@@ -77,7 +80,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', getenv('WP_DEBUG'));
+define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -87,3 +90,10 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+
+/** Overwrite URL prefix for Vagrant instance */
+
+define('WP_HOME', 'http://www.laslechuzas.com.ar/');
+define('WP_SITEURL', 'http://www.laslechuzas.com.ar/');
+define('FS_METHOD', 'direct');

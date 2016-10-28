@@ -11,6 +11,84 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  *
  */
+
+/**
+ * Customizer - Add Custom Styling
+ */
+function brasserie_customizer_style()
+{
+	wp_enqueue_style('brasserie-customizer', get_template_directory_uri() . '/css/customizer.css');
+}
+add_action('customize_controls_print_styles', 'brasserie_customizer_style');
+
+
+function brasserie_customize_pro( $wp_customize ) {
+
+	if ( ! class_exists( 'WP_Customize_TE_Control' ) ) {
+		class WP_Customize_TE_Control extends WP_Customize_Control {
+			public $content = '';
+
+			/**
+			 * Constructor
+			 */
+			function __construct( $manager, $id, $args ) {
+				// Just calling the parent constructor here
+				parent::__construct( $manager, $id, $args );
+			}
+
+			/**
+			 * This function renders the control's content.
+			 */
+			public function render_content() {
+				echo $this->content;
+			}
+		}
+	}
+
+	/*
+	* //////////////////// Pro Panel ////////////////////////////
+	*/
+		$wp_customize->add_section( 'brasserie_pro', array(
+			'title' => __( 'Upgrade to Pro', 'brasserie' ),
+			'priority' => -100
+		) );
+
+		$wp_customize->add_setting(
+			'brasserie_pro', // IDs can have nested array keys
+			array(
+				'default' => false,
+				'type' => 'brasserie_pro',
+				'sanitize_callback' => 'sanitize_text_field'
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_TE_Control(
+				$wp_customize,
+				'brasserie_pro',
+				array(
+					'content'  => sprintf(
+						__( '<strong>Premium support</strong>, more Customizer options, typography adjustments, and more! %s.', 'brasserie' ),
+						sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a>',
+							esc_url( brasserie_get_pro_link( 'customizer' ) ),
+							__( 'Upgrade to Pro', 'brasserie' )
+						)
+					),
+					'section' => 'brasserie_pro',
+				)
+			)
+		);
+	/*
+	* //////////////////// END Pro Panel ////////////////////////////
+	*/
+
+}
+add_action( 'customize_register', 'brasserie_customize_pro' );
+
+
+
+
 function brasserie_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
@@ -43,6 +121,24 @@ add_action ('admin_menu', 'brasserie_admin');
  * @since brasserie 1.0
  */
 function brasserie_register_theme_customizer( $wp_customize ) {
+	
+	$wp_customize->add_setting('header_homepage_only', array(
+			'default' => false,
+      		'sanitize_callback' => 'brasserie_sanitize_checkbox',
+		));
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'header_homepage_only_control',
+				array(
+					'label'      	=> __('Show on Hompage only', 'brasserie'),
+					'section'    	=> 'header_image',
+					'settings'   	=> 'header_homepage_only',
+					'type'		 	=> 'checkbox',
+					'priority'	 	=> 10,
+				)
+		));
  
     $wp_customize->add_setting('brasserie_link_color', array(
             'default'     => '#000000',
@@ -299,8 +395,6 @@ function brasserie_customizer( $wp_customize ) {
 }
 add_action( 'customize_register', 'brasserie_customizer' );
 
-
-add_filter( 'wp_title', 'brasserie_wp_title' );
 /*
  * add settings to create various social media text areas.
  */
@@ -708,7 +802,7 @@ function brasserie_head_css(){
 		$font_style = preg_replace("/[^A-Za-z?! ]/","", $font_weight_style);
 		if( $font_style == "" ){ $font_style = "normal"; }
 		?>
-			<link id='brasserie-<?php echo $key; ?>-font-family' href="http://fonts.googleapis.com/css?family=<?php echo str_replace(" ", "+", get_theme_mod("brasserie_" . $key . "_font_family") ) . ":" . $font_weight_style . ( $font_weight_style != '400' ? ',400' : '' ) ; ?>" rel='stylesheet' type='text/css'>
+			<link id='brasserie-<?php echo $key; ?>-font-family' href="//fonts.googleapis.com/css?family=<?php echo str_replace(" ", "+", get_theme_mod("brasserie_" . $key . "_font_family") ) . ":" . $font_weight_style . ( $font_weight_style != '400' ? ',400' : '' ) ; ?>" rel='stylesheet' type='text/css'>
 	
 			<style id="<?php echo "brasserie-" . $key ."-style"; ?>">
 	
@@ -887,7 +981,6 @@ function brasserie_reorder_sections_theme_customizer($wp_customize){
 	
 	$wp_customize->get_section('title_tagline')->priority = 1;
 	$wp_customize->get_section('brasserie_logo_section')->priority = 2;
-	$wp_customize->get_section('nav')->priority = 3;
 	$wp_customize->get_section('header_image')->priority = 5;
 	$wp_customize->get_section('colors')->priority = 6;
 	$wp_customize->get_section('brasserie_customizer_section_fonts')->priority = 7;

@@ -4,9 +4,10 @@
  * @var LocoPackage $package
  */
 $nav = array (
-    Loco::__('Packages') => LocoAdmin::uri(),
-    Loco::__('Settings') => LocoAdmin::uri( array(), 'settings' ),
-    Loco::__('File check') => '',
+    Loco::__('Packages') => array( 'href' => LocoAdmin::uri() ),
+    Loco::__('Settings') => array( 'href' => LocoAdmin::uri( array(), 'settings' ), 'icon' => 'admin-settings' ),
+    // 
+    Loco::__('File check') => array( 'icon' => 'admin-tools' ),
 ); 
 ?>
 
@@ -54,7 +55,7 @@ $nav = array (
     
     <p class="submit">
         <a class="button-primary" href="<?php Loco::h( LocoAdmin::uri() )?>"><?php Loco::h( Loco::__('Back') )?></a>
-        <a class="button" href="http://wordpress.org/support/plugin/<?php echo Loco::NS?>" target="_blank"><?php Loco::h( Loco::__('Get help') )?></a>
+        <a class="button" href="https://localise.biz/help/wordpress/translate-plugin/support" target="_blank"><?php Loco::h( Loco::__('Get help') )?></a>
     </p>
 
     

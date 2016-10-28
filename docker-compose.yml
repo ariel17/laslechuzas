@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: "ff4131c1a74f938adc1f1514a2a9f6677f527db5"
       MYSQL_DATABASE: "laslechuzas"
       MYSQL_USER: "laslechuzas"
-      MYSQL_PASSWORD: "fd11c55f5d3607ccc166398d8066ac6969fc650a"
+      MYSQL_PASSWORD: "p3p4p111g#"
     volumes:
       - ./docker/db/data:/var/lib/mysql
     ports:
@@ -20,7 +20,7 @@ services:
     environment:
       DB_NAME: "laslechuzas"
       DB_USER: "laslechuzas"
-      DB_PASSWORD: "fd11c55f5d3607ccc166398d8066ac6969fc650a"
+      DB_PASSWORD: "p3p4p111g#"
       DB_HOST: "db"
       WP_DEBUG: "true"
     volumes:

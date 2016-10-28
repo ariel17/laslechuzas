@@ -43,14 +43,19 @@
 				<?php if (get_theme_mod( 'topBarContact_email' )):?>
                 <i class="fa fa-envelope"></i>
 					<span class="email">
-						<?php echo esc_attr(get_theme_mod( 'topBarContact_email' ) ); ?>
+						<a href="mailto:<?php echo esc_attr(get_theme_mod( 'topBarContact_email' ) ); ?>"><?php echo esc_html(get_theme_mod( 'topBarContact_email' ) ); ?></a>
 					</span>
 				<?php endif; ?>
 			</div>
-			<div class="topbar_content_right">
-				
-				<?php get_template_part( 'inc/socmed' ); ?>
-			</div>
+			<div class="topbar_content_right <?php if ( is_woocommerce_activated()) : ?>withCart<?php endif; ?>"><?php get_template_part( 'inc/socmed' ); ?>
+				    	<?php
+					    	if ( is_woocommerce_activated()) {
+					    		echo '<div class="top-bar-mini-cart"><ul>';
+								do_action( 'brasserie_header_cart' );
+								echo '</ul></div>';
+							} 
+						?>
+						</div><!-- .topbar_content_right -->
 	    </div>
     </div>
 	<div class="header_placeholder" style="margin-top: 0px;"></div>
@@ -80,10 +85,39 @@
 	</div><!-- #masthead-wrap -->
 	<div id="main" class="site-main">
     <div class="header-image">
-	<?php $header_image = get_header_image();
-		if ( ! empty( $header_image ) ) { ?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
-			</a>
-		<?php } // if ( ! empty( $header_image ) ) ?>
+
+	<?php
+		$header_image = get_header_image();
+		if( ! empty( $header_image) ){
+
+			if( get_theme_mod('header_homepage_only') ){
+				if( is_front_page() ){
+					?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
+						</a>
+					<?php
+				}elseif ( is_page() ){
+					?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<?php	the_post_thumbnail('header'); ?>
+						</a>
+					<?php
+				}
+			}else{
+				?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
+					</a>
+				<?php
+			}
+
+		} elseif ( is_page() ){
+			?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					<?php	the_post_thumbnail('header'); ?>
+				</a>
+			<?php
+		}
+	?>
 	</div>

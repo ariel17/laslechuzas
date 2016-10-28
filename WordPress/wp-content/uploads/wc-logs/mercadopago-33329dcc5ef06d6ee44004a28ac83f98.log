@@ -1,0 +1,34 @@
+07-24-2015 @ 16:59:51 - Payment arguments for order 151: Array
+(
+    [back_urls] => Array
+        (
+            [success] => http://www.laslechuzas.com.ar/checkout/order-received/151?key=wc_order_55b2993587328
+            [failure] => http://www.laslechuzas.com.ar/cart/?cancel_order=true&order=wc_order_55b2993587328&order_id=151&redirect&_wpnonce=2e3f8008fe
+            [pending] => http://www.laslechuzas.com.ar/checkout/order-received/151?key=wc_order_55b2993587328
+        )
+
+    [payer] => Array
+        (
+            [name] => Ariel Gerardo
+            [surname] => Ríos
+            [email] => laslechuzaspizeria@gmail.com
+        )
+
+    [external_reference] => LasLechuzas-151
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [quantity] => 1
+                    [unit_price] => 65
+                    [currency_id] => ARS
+                    [title] => Pedido 151 - Pizza de jamón y morrones x 1
+                )
+
+        )
+
+)
+
+07-24-2015 @ 16:59:51 - Getting client credentials...
+07-24-2015 @ 16:59:51 - Received valid response from MercadoPago
+07-24-2015 @ 16:59:51 - Payment link generated with success from MercadoPago

@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-require_once( 'facebook.php' );
+include_once( 'facebook.php' );
 /**
  * WooSocio Base Class
  *
@@ -88,7 +88,7 @@ class Woo_Socio {
 											 'status' 	  => true,
 											 'cookie' 	  => true,
 											 'xfbml' 	  => true,
-											 'fileUpload' => true   ));
+											 'fileUpload' => true ));
 		
 	} // End __construct()
 
@@ -104,6 +104,7 @@ class Woo_Socio {
 		add_action( 'admin_init', array( $this, 'woosocio_admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'woosocio_admin_menu' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'woosocio_meta_box' ) );
+		add_action( 'save_post', array( $this, 'clear_cache' ));
 		add_action( 'save_post', array( $this, 'socialize_post' ));
 		add_action( 'wp_ajax_my_action', array( $this, 'woosocio_ajax_action' ));
 		add_action( 'wp_ajax_save_app_info', array( $this, 'save_app_info' ));
@@ -204,13 +205,15 @@ class Woo_Socio {
 		  ?>
 		  <div class="fb-like" data-href="<?php echo $socio_link; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		  <div id="fb-root"></div>
-		  <script>(function(d, s, id) {
+		  <script><!--
+		  (function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
 			js = d.createElement(s); js.id = id;
 			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1<?php echo $fb_appid_option; ?>";
 			fjs.parentNode.insertBefore(js, fjs);
-		  }(document, 'script', 'facebook-jssdk'));</script> 
+		  }(document, 'script', 'facebook-jssdk'));//-->
+          </script> 
 		  <?php
 		}
 	}
@@ -261,7 +264,7 @@ class Woo_Socio {
              &nbsp; <a href="#" id="woosocio-form-edit"><?php _e( 'Edit', 'woosocio' ); ?></a>
 		</div> 
         
-		<script type="text/javascript">
+		<script type="text/javascript"><!--
         jQuery(document).ready(function($){
                 $("#woosocio-form").hide();
                 
@@ -293,6 +296,7 @@ class Woo_Socio {
             });
 
         });
+		//-->
         </script>
 		<?php 
 		}
@@ -359,6 +363,14 @@ class Woo_Socio {
 			'woosocio_options', 
 			'woosocio_options_section' 
 		);
+
+		add_settings_field( 
+			'woosocio_option_posting_type', 
+			__( 'Post product as ', 'woosocio' ), 
+			array($this, 'woosocio_option_posting_type'), 
+			'woosocio_options', 
+			'woosocio_options_section' 
+		);
 	   
     }
 
@@ -387,8 +399,9 @@ class Woo_Socio {
 	}
 
 	function woosocio_checkbox_post_update(  ) { 
-	
 		$options = get_option( 'woosocio_settings' );
+		if ( !isset ( $options['woosocio_checkbox_post_update'] ) )
+			$options['woosocio_checkbox_post_update'] = 0;
 		?>
 		<input type='checkbox' name='woosocio_settings[woosocio_checkbox_post_update]' <?php checked( $options['woosocio_checkbox_post_update'], 1 ); ?> value='1'>
 		<?php
@@ -398,15 +411,32 @@ class Woo_Socio {
 	
 	function woosocio_checkbox_notifications(  ) { 
 		$options = get_option( 'woosocio_settings' );
+		if ( !isset ( $options['woosocio_checkbox_notifications'] ) )
+			$options['woosocio_checkbox_notifications'] = 0;
 		?>
 		<input type='checkbox' name='woosocio_settings[woosocio_checkbox_notifications]' <?php checked( $options['woosocio_checkbox_notifications'], 1 ); ?> value='1'>
 		<?php
 	
 	}
 
+	function woosocio_option_posting_type(  ) { 
+		$options = get_option( 'woosocio_settings' );
+		if ( !isset ( $options['woosocio_option_posting_type'] ) )
+			$options['woosocio_option_posting_type'] = 'link';
+		?>
+		<input type="radio" name='woosocio_settings[woosocio_option_posting_type]' value='link' 
+				<?php echo ($options['woosocio_option_posting_type'] == 'link') ? 'checked' : '' ?> > 
+				<?php echo __( 'Link', 'woosocio' ) ?>
+		<input type="radio" name='woosocio_settings[woosocio_option_posting_type]' value='pic'
+        		<?php echo ($options['woosocio_option_posting_type'] == 'pic') ? 'checked' : '' ?> > 
+		        <?php echo __( 'Picture', 'woosocio' ) ?>
+		<?php
+	
+	}
+
 	function woosocio_settings_section_callback(  ) { 
 	
-		echo __( 'This section description', 'woosocio' );
+		echo __( 'Settings', 'woosocio' );
 	
 	}
 
@@ -420,14 +450,13 @@ class Woo_Socio {
 
 		global $wpdb;
 		
-		$post_id = get_the_ID();
+		//$post_id = get_the_ID();
 		$message = get_the_title($post_id);
 		$this->check_connection();
-		//$fb_post = get_post_meta( $post_id, '_woosocio_facebook', true );
 		$fb_post = metadata_exists('post', $post_id, '_woosocio_facebook') ? get_post_meta( $post_id, '_woosocio_facebook', true ) : 'checked';
 		$fb_posted = metadata_exists('post', $post_id, '_woosocio_fb_posted') ? get_post_meta( $post_id, '_woosocio_fb_posted', true ) : '';
 		$message.= metadata_exists('post', $post_id, '_woosocio_msg') ? " - ".get_post_meta( $post_id, '_woosocio_msg', true ) : '';
-		$fb_page_value = get_option( $this->fb_user_profile['id'].'_fb_page_id', $this->fb_user_profile['id'] );
+		$fb_page_value = get_option( $this->fb_user_profile['id'].'_fb_page_id', array('me' => $this->fb_user_profile['id']));
 		$options = get_option( 'woosocio_settings' );
 		$repost = !$fb_posted ? true : $options['woosocio_checkbox_post_update'];
 		
@@ -442,12 +471,48 @@ class Woo_Socio {
 		
 		if ( $this->check_connection() && $fb_post && !$socio_post->ID == '' && $repost)
 		{
-			//$message = get_post_meta( $post_id, '_woosocio_msg', true );
-			$socio_link = get_permalink( $post_id );
+			if (key($fb_page_value) == 'page'){
+				$page_info = $this -> facebook -> api("/".reset($fb_page_value)."?fields=access_token");
+				$access_token = $page_info['access_token'];
+			} else {
+				$access_token = $this->facebook->getAccessToken();
+			}
+
+			if ( !isset ( $options['woosocio_option_posting_type'] ) )
+				$options['woosocio_option_posting_type'] = 'link';
+			
+			if ( $options['woosocio_option_posting_type'] == 'link' ){
+
+				$socio_link = get_permalink( $post_id );
+				$this -> facebook -> api('/','POST',array('id'=>$socio_link, 'scrape'=>'true'));
+				$post_arr = array(  'access_token'  => $access_token,
+									'link' 			=> $socio_link,
+                                    'message'		=> $message
+								 );
+				$node = '/feed';
+				wp_remote_post("https://graph.facebook.com?id=".get_permalink($post_id)."&scrape=true");
+	
+			} else {
+	
+				$_pf = new WC_Product_Factory();  
+				$_product = $_pf->get_product($post_id);
+
+				$post_desc = strip_tags( get_post_field( 'post_content', $post_id ) );
+				$message.= "\n" . __( 'Price: ', 'woosocio') . $_product->get_price() . "\n" . $post_desc . "\n" . __( 'Link: ', 'woosocio') . get_permalink( $post_id );
+
+				$post_arr = array(	'access_token'  => $access_token,
+		  							'message'		=> $message,
+									'image'			=> '@' . get_attached_file( get_post_thumbnail_id( $post_id ) ),
+	   							 );
+				$node = '/photos';
+			}
+
 			try {
-				$ret_obj = $this -> facebook -> api('/'.$fb_page_value.'/feed', 'POST', array(  'link' 		=> $socio_link,
-                                         														'message'	=> $message)
-                                      		   );
+
+				$ret_obj = $this -> facebook -> api('/'.reset($fb_page_value).$node, 'POST', $post_arr);
+				
+				$this -> facebook -> api('/','POST',array('id'=>$socio_link, 'scrape'=>'true'));
+				wp_remote_post("https://graph.facebook.com?id=".get_permalink($post_id)."&scrape=true");
 
 				if ($ret_obj) {
 					if ( ! update_post_meta ($post_id, '_woosocio_fb_posted', 'checked' ) ) 
@@ -478,16 +543,28 @@ class Woo_Socio {
 	}
 
 	/**
+	 * clear cache function.
+	 *
+	 * @access public
+	 * @return void
+	 */		
+	function clear_cache($postid){
+		if(get_post_status($postid) == "publish"){
+			wp_remote_post("https://graph.facebook.com?id=".get_permalink($postid)."&scrape=true");
+		}
+	}
+
+	/**
 	 * woosocio_admin_menu function.
 	 *
 	 * @access public
 	 * @return void
 	 */		
 	public function woosocio_admin_menu () {
-		add_menu_page( 'WooSocio', 'WooSocio', 'manage_options', 'woosocio', '', $this->assets_url.'/menu_icon_wc.png', 50 );
-		$page_logins   = add_submenu_page( 'woosocio', 'WooSocio Logins', 'WooSocio Logins', 'manage_options', 'woosocio', array( $this, 'socio_settings' ) );
-		$page_products = add_submenu_page( 'woosocio', 'WooSocio Products', 'WooSocio Products', 'manage_options', 'products_list', array( $this, 'products_list' ) );
-		$page_options  = add_submenu_page( 'woosocio', 'WooSocio Options', 'WooSocio Options', 'manage_options', 'woosocio_options', array( $this, 'woosocio_options' ) );
+		add_menu_page( 'WooSocio', 'WooSocio', 'manage_woocommerce', 'woosocio', '', $this->assets_url.'/menu_icon_wc.png', 51 );
+		$page_logins   = add_submenu_page( 'woosocio', 'WooSocio Logins', 'WooSocio Logins', 'manage_woocommerce', 'woosocio', array( $this, 'socio_settings' ) );
+		$page_products = add_submenu_page( 'woosocio', 'WooSocio Products', 'WooSocio Products', 'manage_woocommerce', 'products_list', array( $this, 'products_list' ) );
+		$page_options  = add_submenu_page( 'woosocio', 'WooSocio Options', 'WooSocio Options', 'manage_woocommerce', 'woosocio_options', array( $this, 'woosocio_options' ) );
 		/*$page = add_options_page( 'Socio Logins', 'WooSocio Options', 'manage_options', 'woosocio', array( $this, 'socio_settings' ) );*/
 		add_action( 'admin_print_styles-' . $page_logins, array( $this, 'woosocio_admin_styles' ) );
 		add_action( 'admin_print_styles-' . $page_products, array( $this, 'woosocio_admin_styles' ) );
@@ -531,10 +608,10 @@ class Woo_Socio {
 	public function products_list () {
 		
 		?>
-		<script type="text/javascript">
+		<script type="text/javascript"><!--
 			url = '<?php echo add_query_arg( array('post_type' => 'product',
 											   	   'list'	   => 'woosocio'), admin_url('edit.php')) ?>';
-			window.location.replace(url);											   
+			window.location.replace(url);//-->
 		</script>
         <?php
 		
@@ -601,7 +678,7 @@ class Woo_Socio {
 	public function update_page_info() {
 		$this->check_connection();
 		$user_sign = $this->fb_user_profile['id'].'_fb_page_id';
-		if(update_option( $user_sign, $_POST['fb_page_id'] ))
+		if(update_option( $user_sign, array($_POST['fb_type'] => $_POST['fb_page_id']) ))
 			_e( 'Page Info Updated!', 'woosocio');
 		else
 			_e( 'Unable to update page info! Please try again.', 'woosocio');

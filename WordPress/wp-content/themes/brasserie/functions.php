@@ -83,6 +83,9 @@ function brasserie_setup() {
 	// Display Title in theme
 	add_theme_support( 'title-tag' );
 
+	// Support for Woocommerce
+	add_theme_support( 'woocommerce' );
+
 	// link a custom stylesheet file to the TinyMCE visual editor
     $font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Open+Sans' );
 	add_editor_style( array('style.css', 'css/editor-style.css', $font_url) );
@@ -129,6 +132,15 @@ function brasserie_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Primary Sidebar', 'brasserie' ),
 		'id' => 'sidebar-1',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Shop Sidebar', 'brasserie' ),
+		'id' => 'woocommerce_sidebar',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h1 class="widget-title">',
@@ -268,30 +280,6 @@ function content($limit) {
 }
 
 /**
- * Filters the page title appropriately depending on the current page
- *
- * This function is attached to the 'wp_title' fiilter hook.
- *
- * @uses	home_url()
- * @uses	is_home()
- * @uses	is_front_page()
- */
-function brasserie_wp_title( $title ) {
-	global $page, $paged;
-
-	if ( is_feed() )
-		return $title;
-
-	$site_description = get_bloginfo( 'description' );
-
-	$filtered_title = $title . get_bloginfo( 'name' );
-	$filtered_title .= ( ! empty( $site_description ) && ( is_home() || is_front_page() ) ) ? ' | ' . $site_description: '';
-	$filtered_title .= ( 2 <= $paged || 2 <= $page ) ? ' | ' . sprintf( __( 'Page %s', 'brasserie' ), max( $paged, $page ) ) : '';
-
-	return $filtered_title;
-}
-
-/**
  * Social Media Links on Contributors template
  */
 function author_social_media( $socialmedialinks ) {
@@ -316,6 +304,12 @@ function new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+/**
+ * Pro Link
+ */
+ function brasserie_get_pro_link( $content ) {
+	return esc_url( 'http://www.templateexpress.com/brasseriepro-theme' );
+}
 
 /**
  * Implement the Custom Header feature
@@ -457,3 +451,38 @@ function brasserie_admin_header_image() { ?>
 	</div>
 <?php }
 endif; // brasserie_admin_header_image
+
+
+/**
+ * /////////// WooCommerce /////////////////////
+ */
+
+/*  Query WooCommerce activation */
+if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+	function is_woocommerce_activated() {
+		return class_exists( 'woocommerce' ) ? true : false;
+	}
+}
+
+/*  Get woocommerce custom theme code */
+if ( is_woocommerce_activated() ) {
+	require get_template_directory() . '/inc/woocommerce/hooks.php';
+
+  function brasserie_header_add_to_cart_fragment( $fragments ) {
+    global $woocommerce;
+    ob_start();
+    ?>
+    <a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'brasserie'); ?>">
+      <?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'brasserie'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?>
+      <i class="fa fa-shopping-cart"></i>
+    </a>
+    <?php
+
+    $fragments['a.cart-contents'] = ob_get_clean();
+
+    return $fragments;
+
+  }
+  add_filter('add_to_cart_fragments', 'brasserie_header_add_to_cart_fragment');
+
+}
