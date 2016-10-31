@@ -24,7 +24,7 @@ services:
       DB_HOST: "db"
       WP_DEBUG: "true"
     volumes:
-      - "./WordPress:/srv/laslechuzas/site"
+      - "./WordPress:/srv/laslechuzas/www/WordPress"
     links:
       - db:db
   
