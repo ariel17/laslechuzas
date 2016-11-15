@@ -121,7 +121,7 @@ add_action ('admin_menu', 'brasserie_admin');
  * @since brasserie 1.0
  */
 function brasserie_register_theme_customizer( $wp_customize ) {
-	
+
 	$wp_customize->add_setting('header_homepage_only', array(
 			'default' => false,
       		'sanitize_callback' => 'brasserie_sanitize_checkbox',
@@ -139,7 +139,7 @@ function brasserie_register_theme_customizer( $wp_customize ) {
 					'priority'	 	=> 10,
 				)
 		));
- 
+
     $wp_customize->add_setting('brasserie_link_color', array(
             'default'     => '#000000',
             'transport'   => 'postMessage',
@@ -154,7 +154,7 @@ function brasserie_register_theme_customizer( $wp_customize ) {
                 'sanitize_callback' => 'brasserie_sanitize_hex',
             )
         )
-    );   
+    );
 }
 add_action( 'customize_register', 'brasserie_register_theme_customizer' );
 function brasserie_slider_theme_customizer( $wp_customize ){
@@ -165,18 +165,18 @@ function brasserie_slider_theme_customizer( $wp_customize ){
 		)
 	);
 	$i_priority = 1;
-	
+
 	$wp_customize->add_setting('brasserie_slider', array(
 			'default' => 'none',
             'sanitize_callback' => 'brasserie_sanitize_text',
 		)
 	);
-	
+
 	$list_slider_options = array( // 3
 		'none'       => __( 'No Slider', 'brasserie' ),
 		'flexslider'       => __( 'FlexSlider', 'brasserie' )
 	);
-	
+
 	$wp_customize->add_control( 'brasserie_slider_select', array(
 			'type'     => 'select',
 			'label'    => __( 'Select Slider', 'brasserie' ),
@@ -186,14 +186,14 @@ function brasserie_slider_theme_customizer( $wp_customize ){
 			'choices'  => $list_slider_options,
 		)
 	);
-	
+
 }
 add_action('customize_register', 'brasserie_slider_theme_customizer');
 /**
  * Implement the Custom Logo feature
  */
 function brasserie_theme_customizer( $wp_customize ) {
-   
+
    $wp_customize->add_section( 'brasserie_logo_section' , array(
     'title'       => __( 'Site Logo', 'brasserie' ),
     'description' => __( 'Upload a logo to replace the default site name and description in the header', 'brasserie' ),
@@ -212,13 +212,13 @@ add_action('customize_register', 'brasserie_theme_customizer');
  * Adds the individual section for contact details
  */
 function topBarContact_customizer( $wp_customize ) {
-	
+
     $wp_customize->add_section( 'topBarContact_section_contact', array(
 	     'title'       => __( 'Top Bar Contact Details', 'brasserie' ),
 	     'description' => __( 'This is a settings section to change the contact details in the top bar of header.', 'brasserie' ),
         )
     );
-	
+
 	$wp_customize->add_setting(
 	    'topBarContact_telNo', array(
 		    'default' => __( 'tel number', 'brasserie' ),
@@ -233,7 +233,7 @@ function topBarContact_customizer( $wp_customize ) {
 		    'sanitize_callback' => 'brasserie_sanitize_text',
 	    )
 	);
-	
+
 	$wp_customize->add_control(
 		'topBarContact_telNo', array(
 			'label'    => __( 'Telephone Number', 'brasserie' ),
@@ -241,7 +241,7 @@ function topBarContact_customizer( $wp_customize ) {
 			'type' => 'text',
 		)
 	);
-	
+
 	$wp_customize->add_control(
 		'topBarContact_email', array(
 			'label'    => __( 'Email Address', 'brasserie' ),
@@ -255,7 +255,7 @@ add_action( 'customize_register', 'topBarContact_customizer' );
  * Adds Homepage Promotional Bar Options
  */
 function brasserie_customizer( $wp_customize ) {
-	
+
     $wp_customize->add_section( 'featured_section_top', array(
     'title'       => __( 'Homepage - Promotion Bar', 'brasserie' ),
     'description' => __( 'Add a url address for the button to show in the promotion bar.', 'brasserie' ),
@@ -276,7 +276,7 @@ function brasserie_customizer( $wp_customize ) {
 	    'sanitize_callback' => 'brasserie_sanitize_text',
 	    )
 	);
-	
+
 	$wp_customize->add_setting(
         'brasserie_shout_color',
         array(
@@ -312,9 +312,9 @@ function brasserie_customizer( $wp_customize ) {
    	$wp_customize->add_setting( 'featured_button_url', array(
         'sanitize_callback' => 'brasserie_sanitize_text',
     ) );
-   	
+
    	$priority = 0;
-   	
+
 	$wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
@@ -328,7 +328,7 @@ function brasserie_customizer( $wp_customize ) {
 
         )
     );
-    
+
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
@@ -341,7 +341,7 @@ function brasserie_customizer( $wp_customize ) {
             )
         )
     );
-    
+
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
@@ -354,7 +354,7 @@ function brasserie_customizer( $wp_customize ) {
             )
         )
     );
-    
+
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
             $wp_customize,
@@ -367,7 +367,7 @@ function brasserie_customizer( $wp_customize ) {
             )
         )
     );
-    
+
     $wp_customize->add_control(
 	    'featured_textbox', array(
 	    'label'    => __( 'Featured Text', 'brasserie' ),
@@ -376,7 +376,7 @@ function brasserie_customizer( $wp_customize ) {
 		'priority'	 => $priority++,
 	    )
 	);
-	
+
 	$wp_customize->add_control(
 	    'featured_btn_textbox', array(
 	    'label'    => __( 'Button Text', 'brasserie' ),
@@ -402,7 +402,7 @@ function brasserie_customize($wp_customize) {
 	$wp_customize->add_section( 'brasserie_socmed_settings', array(
 		'title'          => 'Social Media Settings',
 	) );
-	
+
 	$list_channels = array( // 1
 		'twitter'		=> __( 'Twitter url', 'brasserie' ),
 		'facebook'		=> __( 'Facebook url', 'brasserie' ),
@@ -429,10 +429,10 @@ function brasserie_customize($wp_customize) {
 			'type'    => 'text',
 		) );
 	}
-	
+
 }
 add_action('customize_register', 'brasserie_customize');
-/* 
+/*
  * USE TO divide a section in to smaller sections
  */
 function brasserie_add_customizer_custom_controls( $wp_customize ) {
@@ -456,7 +456,7 @@ function brasserie_add_customizer_custom_controls( $wp_customize ) {
 		<?php
 		}
 	}
-	
+
 	class brasserie_footer extends WP_Customize_Control {
 		public $type = 'footer';
 		public function render_content() {
@@ -468,26 +468,26 @@ function brasserie_add_customizer_custom_controls( $wp_customize ) {
 }
 add_action( 'customize_register', 'brasserie_add_customizer_custom_controls' );
 /*
- * 
+ *
  * Company Logo section
  *
  */
 function brasserie_company_logo_options( $wp_customize ){
-	
+
 	$list_company_modules = array( // 1
 		'one'		=> __( 'Image 1', 'brasserie' ),
 		'two'		=> __( 'Image 2', 'brasserie' ),
 		'three'		=> __( 'Image 3', 'brasserie' ),
 		'four'		=> __( 'Image 4', 'brasserie' ),
 	);
-	
+
 	$wp_customize->add_section( 'brasserie_customizer_company_logos', array(
 		'title'    => __( 'Homepage - Todays Specials', 'brasserie' ),
 		'description'    => __( 'You can list up to 4 images of todays specials here.', 'brasserie' ),
 		'panel'			=> 'brasserie_homepage_panel',
 	));
 	$i_priority = 1;
-	
+
 	$wp_customize->add_setting('brasserie_partner_txt', array(
 		'default' => __('Specials', 'brasserie'),
 		'transport' => 'postMessage',
@@ -502,22 +502,22 @@ function brasserie_company_logo_options( $wp_customize ){
 			'priority' => $i_priority++
 		)
 	);
-	
-	
+
+
 	foreach ($list_company_modules as $key => $value) {
-	
+
 		/* Add sub title */
 		$wp_customize->add_setting( 'brasserie_company_' . $key . '_sub_title', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_sub_title( $wp_customize, 'brasserie_company_' . $key . '_sub_title', array(
 				'label'		=> $value,
 				'section'   => 'brasserie_customizer_company_logos',
 				'settings'  => 'brasserie_company_' . $key . '_sub_title',
-				'priority' 	=> $i_priority++ 
-				) 
-			) 
+				'priority' 	=> $i_priority++
+				)
+			)
 		);
 		/* Add logo upload */
 		$wp_customize->add_setting( 'brasserie_' . $key . '_logo_upload', array(
@@ -528,11 +528,11 @@ function brasserie_company_logo_options( $wp_customize ){
 		            'label' 	=> __( 'Image Upload', 'brasserie' ),
 		            'section' 	=> 'brasserie_customizer_company_logos',
 		            'settings' 	=> 'brasserie_' . $key . '_logo_upload',
-		            'priority' 	=> $i_priority++ 
+		            'priority' 	=> $i_priority++
 		        )
 		    )
 		);
-		
+
 		/* Add Web URL */
 		$wp_customize->add_setting( 'brasserie_' . $key . '_company_url', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
@@ -542,30 +542,30 @@ function brasserie_company_logo_options( $wp_customize ){
 			'section' 	=> 'brasserie_customizer_company_logos',
 			'settings' 	=> 'brasserie_' . $key . '_company_url',
 			'type' 		=> 'text',
-			'priority' 	=> $i_priority++ 
+			'priority' 	=> $i_priority++
 			)
 		);
 		/* Add footer bar */
 		$wp_customize->add_setting( 'brasserie_company_' . $key . '_footer', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_footer( $wp_customize, 'brasserie_company_' . $key . '_footer', array(
 			'label'		=> $value,
 			'section'   => 'brasserie_customizer_company_logos',
 			'settings'  => 'brasserie_company_' . $key . '_footer',
-			'priority' 	=> $i_priority++ 
+			'priority' 	=> $i_priority++
 		) ) );
-	}// end foreach	
+	}// end foreach
 }
 add_action( 'customize_register', 'brasserie_company_logo_options' );
 /*
- * 
+ *
  * Feature Text Boxes
  *
  */
 function brasserie_feature_text_boxes_options( $wp_customize ){
-	
+
 	$list_feature_modules = array( // 1
 		'one'		=> __( 'Feature Text Box 1', 'brasserie' ),
 		'two'		=> __( 'Feature Text Box 2', 'brasserie' ),
@@ -577,21 +577,21 @@ function brasserie_feature_text_boxes_options( $wp_customize ){
 		'panel'		=> 'brasserie_homepage_panel',
 	));
 	$i_priority = 1;
-	
+
 	foreach ($list_feature_modules as $key => $value) {
-	
+
 		/* Add sub title */
 		$wp_customize->add_setting( 'brasserie_' . $key . '_sub_title', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_sub_title( $wp_customize, 'brasserie_' . $key . '_sub_title', array(
 					'label'		=> $value,
 					'section'   => 'brasserie_customizer_feature_text_boxes',
 					'settings'  => 'brasserie_' . $key . '_sub_title',
-					'priority' 	=> $i_priority++ 
-				) 
-			) 
+					'priority' 	=> $i_priority++
+				)
+			)
 		);
 		/* File Upload */
 		$wp_customize->add_setting( 'header-'.$key.'-file-upload', array(
@@ -606,12 +606,12 @@ function brasserie_feature_text_boxes_options( $wp_customize ){
 		        )
 		    )
 		);
-		
+
 		/* URL */
 		$wp_customize->add_setting( 'header_'.$key.'_url', array(
 		        'default' => __( 'Header URL', 'brasserie' ),
 				'sanitize_callback' => 'brasserie_sanitize_text',
-			) 
+			)
 		);
 		$wp_customize->add_control('header_'.$key.'_url', array(
 				'label'    => __( 'Web URL', 'brasserie' ),
@@ -621,7 +621,7 @@ function brasserie_feature_text_boxes_options( $wp_customize ){
 				'priority' => $i_priority++
 			)
 		);
-	
+
 		/* Featured Header Text */
 		$wp_customize->add_setting('featured_textbox_header_'.$key, array(
 		        'default' => __( 'Default featured text Header', 'brasserie' ),
@@ -637,7 +637,7 @@ function brasserie_feature_text_boxes_options( $wp_customize ){
 				'priority' => $i_priority++
 			)
 		);
-		
+
 		/* Sub Text */
 		$wp_customize->add_setting('featured_textbox_text_'.$key, array(
 				'default' => __( 'Default featured text', 'brasserie' ),
@@ -657,14 +657,14 @@ function brasserie_feature_text_boxes_options( $wp_customize ){
 		$wp_customize->add_setting( 'brasserie_' . $key . '_footer', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_footer( $wp_customize, 'brasserie_' . $key . '_footer', array(
 			'label'		=> $value,
 			'section'   => 'brasserie_customizer_feature_text_boxes',
 			'settings'  => 'brasserie_' . $key . '_footer',
 			'priority' 	=> $i_priority++
 		) ) );
-	}// end foreach	
+	}// end foreach
 }
 add_action( 'customize_register', 'brasserie_feature_text_boxes_options' );
 /**
@@ -674,7 +674,7 @@ add_action( 'customize_register', 'brasserie_feature_text_boxes_options' );
 /**
  * Font Picker Options
  * ================================================================================
- * 
+ *
  */
 function brasserie_register_customizer_options( $wp_customize ) {
 	//
@@ -691,7 +691,7 @@ function brasserie_register_customizer_options( $wp_customize ) {
 	/*$list_fonts['Lato'] 	= 'Theme Default';*/
 	foreach ( $list_fonts_decode['items'] as $key => $value ) {
 		$item_family                     = $list_fonts_decode['items'][$key]['family'];
-		$list_fonts[$item_family]        = $item_family; 
+		$list_fonts[$item_family]        = $item_family;
 		$list_font_weights[$item_family] = $list_fonts_decode['items'][$key]['variants'];
 	}
 	$list_all_font_weights = array( // 3
@@ -737,7 +737,7 @@ function brasserie_register_customizer_options( $wp_customize ) {
 		$wp_customize->add_setting( 'brasserie_' . $key . '_sub_title', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_sub_title( $wp_customize, 'brasserie_' . $key . '_sub_title', array(
 			'label'		=> $value,
 			'section'   => 'brasserie_customizer_section_fonts',
@@ -771,7 +771,7 @@ function brasserie_register_customizer_options( $wp_customize ) {
 		$wp_customize->add_setting( 'brasserie_' . $key . '_footer', array(
             'sanitize_callback' => 'brasserie_sanitize_text',
         ));
-		$wp_customize->add_control( 
+		$wp_customize->add_control(
 			new brasserie_footer( $wp_customize, 'brasserie_' . $key . '_footer', array(
 			'label'		=> $value,
 			'section'   => 'brasserie_customizer_section_fonts',
@@ -784,9 +784,9 @@ add_action( 'customize_register', 'brasserie_register_customizer_options' );
 /**
  * Add all the font changes to a dynamic stylesheet.
  * ================================================================================
- * 
+ *
  */
-function brasserie_head_css(){ 
+function brasserie_head_css(){
 	//
 	// 	Tags data
 	// 	1. Tags.
@@ -802,30 +802,30 @@ function brasserie_head_css(){
 		$font_style = preg_replace("/[^A-Za-z?! ]/","", $font_weight_style);
 		if( $font_style == "" ){ $font_style = "normal"; }
 		?>
-			<link id='brasserie-<?php echo $key; ?>-font-family' href="//fonts.googleapis.com/css?family=<?php echo str_replace(" ", "+", get_theme_mod("brasserie_" . $key . "_font_family") ) . ":" . $font_weight_style . ( $font_weight_style != '400' ? ',400' : '' ) ; ?>" rel='stylesheet' type='text/css'>
-	
+			<link id='brasserie-<?php echo $key; ?>-font-family' href="//fonts.googleapis.com/css?family=<?php echo str_replace(" ", "+", get_theme_mod("brasserie_" . $key . "_font_family", "Open+Sans") ) . ":" . $font_weight_style . ( $font_weight_style != '400' ? ',400' : '' ) ; ?>" rel='stylesheet' type='text/css'>
+
 			<style id="<?php echo "brasserie-" . $key ."-style"; ?>">
-	
-				
+
+
 			<?php 	if($key === 'body'){
 						echo 'body';
 					}else{
 						echo 'h1,h2,h3,h4,h5,h6';
 					} ?>
 			{
-	
+
 				<?php if($font_family != 'default'){ ?>
 				font-family: '<?php echo $font_family;?>', sans-serif !important;
-				<?php } ?>			
+				<?php } ?>
 				font-weight: <?php echo $font_weight;?> !important;
 				font-style: <?php echo $font_style;?> !important;
-	
+
 			}
-	
+
 			</style>
 		<?php
 	}// end foreach
-	
+
 }// end brasserie_head_css
 add_action( 'wp_head', 'brasserie_head_css' );
 /**
@@ -833,31 +833,31 @@ add_action( 'wp_head', 'brasserie_head_css' );
  */
 function brasserie_customizer_css() {
     ?>
-    <style type="text/css"> 
-        .main-navigation li:hover > a, 
-        .main-navigation li.current_page_item a, 
+    <style type="text/css">
+        .main-navigation li:hover > a,
+        .main-navigation li.current_page_item a,
         .main-navigation li.current-menu-item a,
-        .main-navigation > li > a, 
+        .main-navigation > li > a,
         .main-navigation li.current_page_ancestor a,
-        .main-navigation ul ul li:hover > a, 
-		.main-navigation ul ul li.current_page_item a, 
+        .main-navigation ul ul li:hover > a,
+		.main-navigation ul ul li.current_page_item a,
 		.main-navigation ul ul li.current-menu-item a,
-		.main-small-navigation li:hover > a, 
-		.main-small-navigation li.current_page_item a, 
-		.main-small-navigation li.current-menu-item a, 
+		.main-small-navigation li:hover > a,
+		.main-small-navigation li.current_page_item a,
+		.main-small-navigation li.current-menu-item a,
 		.main-small-navigation ul ul a:hover,
 		.main-small-navigation ul.children li:hover a,
         .entry-meta a,
         .authorLinks a,
-        cite, cite a, 
-        cite a:visited, 
+        cite, cite a,
+        cite a:visited,
         cite a:active,
 		.section_thumbnails h3,
 		.client h3,
 		.socialIcons a, .socialIcons a:visited,
-		.entry-content a, 
-		.entry-content a:visited, 
-		.entry-summary a, 
+		.entry-content a,
+		.entry-content a:visited,
+		.entry-summary a,
 		.entry-summary a:visited,
 		.featuretext h2 a,
 		.flex-caption-title h3 a:hover,
@@ -865,8 +865,8 @@ function brasserie_customizer_css() {
 		.widget-title,
 		.recent a .recent_title h2 , .recent a:visited .recent_title h2,
 		.tooltipsy
-		{ 
-        	color: <?php echo esc_attr(get_theme_mod( 'brasserie_link_color' ) ); ?>   	
+		{
+        	color: <?php echo esc_attr(get_theme_mod( 'brasserie_link_color' ) ); ?>
 		}
 		.title-bottom-border,
 		.tagcloud a,
@@ -877,9 +877,9 @@ function brasserie_customizer_css() {
 			background-color: <?php echo esc_attr(get_theme_mod( 'brasserie_link_color' ) ); ?>;
 		}
         .widget-title,
-        .featuretext_middle, 
+        .featuretext_middle,
         .widget-title,
-        .widget-title:after, 
+        .widget-title:after,
         .featuretext_middle,
         .tooltipsy,
 		#masthead-wrap,
@@ -899,13 +899,13 @@ function brasserie_customizer_css() {
 		.featuretext_button a {
 			background-color: <?php echo esc_attr(get_theme_mod( 'brasserie_shout_button_color' ) ); ?>;
 			color: <?php echo esc_attr(get_theme_mod( 'brasserie_shout_button_text_color' ) ); ?>;
-		} 
+		}
     </style>
     <?php
 }
 add_action( 'wp_head', 'brasserie_customizer_css' );
 function brasserie_hide_show_elements($wp_customize){
-	
+
 	$list_sections = array(
 		'hide_slider_section' 			=> __('Hide Slider Section?', 'brasserie'),
 		'hide_feature_text_boxes' 		=> __('Hide Feature Box Section?', 'brasserie'),
@@ -914,20 +914,20 @@ function brasserie_hide_show_elements($wp_customize){
 		'hide_partner_logos' 			=> __('Hide Specials Section?', 'brasserie'),
 	);
 	$i_priority = 1;
-	
+
 	$wp_customize->add_section( 'brasserie_hide_show', array(
 		'title'    		=> __( 'Homepage - Hide/Show elements', 'brasserie' ),
 		'description'   => __( "Hide elements you don't need on the homepage by un-checking the relevant checkbox.", 'brasserie' ),
 		'panel'			=> 'brasserie_homepage_panel',
 	));
-	
+
 	foreach($list_sections as $key => $value){
-	
+
 		$wp_customize->add_setting( $key, array(
 			'default' 	=> false,
             'sanitize_callback' => 'brasserie_sanitize_checkbox',
 		));
-		
+
 		$wp_customize->add_control( $key, array(
 			'label' 	=> $value,
 			'section' 	=> 'brasserie_hide_show',
@@ -936,7 +936,7 @@ function brasserie_hide_show_elements($wp_customize){
 			'priority' 	=> $i_priority++,
 		));
 	}
-		
+
 }
 add_action( 'customize_register', 'brasserie_hide_show_elements');
 // SANITIZATION
@@ -970,7 +970,7 @@ function brasserie_sanitize_float( $input ) {
 }
 // Sanitize Uploads
 function brasserie_sanitize_upload($input){
-	return esc_url_raw($input);	
+	return esc_url_raw($input);
 }
 // Sanitize Colors
 function brasserie_sanitize_hex($input){
@@ -978,7 +978,7 @@ function brasserie_sanitize_hex($input){
 }
 /* Wait until all sections are created then re-order them */
 function brasserie_reorder_sections_theme_customizer($wp_customize){
-	
+
 	$wp_customize->get_section('title_tagline')->priority = 1;
 	$wp_customize->get_section('brasserie_logo_section')->priority = 2;
 	$wp_customize->get_section('header_image')->priority = 5;
@@ -986,13 +986,12 @@ function brasserie_reorder_sections_theme_customizer($wp_customize){
 	$wp_customize->get_section('brasserie_customizer_section_fonts')->priority = 7;
 	$wp_customize->get_section('topBarContact_section_contact')->priority = 8;
 	$wp_customize->get_section('brasserie_socmed_settings')->priority = 9;
-	$wp_customize->get_section('static_front_page')->priority = 11;
-	
+
 	$wp_customize->get_section('brasserie_slider_section')->priority = 18;
 	$wp_customize->get_section('brasserie_customizer_feature_text_boxes')->priority = 19;
 	$wp_customize->get_section('featured_section_top')->priority = 20;
 	$wp_customize->get_section('brasserie_customizer_company_logos')->priority = 22;
 	$wp_customize->get_section('brasserie_hide_show')->priority = 23;
-	
+
 }
 add_action('customize_register', 'brasserie_reorder_sections_theme_customizer');

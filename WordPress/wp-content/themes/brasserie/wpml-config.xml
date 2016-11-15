@@ -1,0 +1,16 @@
+<wpml-config>
+  <admin-texts>
+    <key name="theme_mods_brasserie">
+      <key name="featured_textbox_header_one"/>
+      <key name="featured_textbox_text_one"/>
+      <key name="featured_textbox_text_two"/>
+      <key name="featured_textbox_header_two"/>
+      <key name="featured_textbox_text_three"/>
+      <key name="featured_textbox_header_three"/>
+      <key name="featured_btn_textbox"/>
+      <key name="featured_textbox"/>
+      <key name="brasserie_partner_txt"/>
+      <key name="copyright_text"/>
+    </key>
+  </admin-texts>
+</wpml-config>

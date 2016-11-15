@@ -4,10 +4,10 @@ Theme URI: http://www.templateexpress.com/brasserie-theme/
 Author: Template Express
 Author URI: http://www.templateexpress.com/
 Description: Brasserie is a full-width, fully responsive and highly customizable WordPress Theme. This Restaurant theme is WooCommerce Supported. Add your own logo, header, featured areas, social media links and much more. This versatile theme also has several different layouts, unlimited colors google font options. Brasserie looks great on devices of all sizes.
-Version: 1.9.1
+Version: 1.9.5
 License: GNU General Public License v2.0
 License URI: ​http://www.gnu.org/licenses/gpl-2.0.html
-Tags: light, white, one-column, two-columns, right-sidebar, fluid-layout, custom-header, custom-menu, featured-images, flexible-header, microformats, post-formats, rtl-language-support, threaded-comments, translation-ready, theme-options, full-width-template, black, responsive-layout, white, left-sidebar, right-sidebar
+Tags: one-column, two-columns, right-sidebar, custom-header, custom-menu, featured-images, flexible-header, microformats, post-formats, rtl-language-support, threaded-comments, translation-ready, theme-options, full-width-template, left-sidebar, right-sidebar, editor-style, custom-background, food-and-drink, e-commerce
 Text Domain: brasserie
 This theme, like WordPress, is licensed under the GPL.
 
@@ -111,8 +111,8 @@ button,
 input,
 select,
 textarea {
-	color: #747474;	
-	
+	color: #747474;
+
 	font-size: 1.4rem;
 	line-height: 1.9;
 }
@@ -697,7 +697,7 @@ a.more-link:hover {
 
 .site-description {
 	font-size: 13px;
-	font-size: 1.3rem;	
+	font-size: 1.3rem;
 	padding-right: 6px;
 }
 
@@ -732,7 +732,7 @@ a.more-link:hover {
 	padding: 0 24px;
 	text-transform: uppercase;
 }
-.main-navigation li > a:after { 
+.main-navigation li > a:after {
 	content: "\f0d7";
 	font-family: 'fontawesome';
 	font-size: 80%;
@@ -745,7 +745,7 @@ a.more-link:hover {
 	width: 8px;
 }
 
-.main-navigation ul ul li > a:after { 
+.main-navigation ul ul li > a:after {
 	content: "\f0da";
 	font-family: 'fontawesome';
 	position: relative;
@@ -753,14 +753,14 @@ a.more-link:hover {
 	margin: 0;
 	margin-right: 6px;
 	top: 0
-	
+
 }
 .main-navigation li > a:only-child:after { content: ''; }
 .main-navigation.sticky{
     position: fixed;
-    height:auto;  
-    top:0px; 
-    z-index: 9999; 
+    height:auto;
+    top:0px;
+    z-index: 9999;
 }
 .main-navigation ul {
 	list-style: none;
@@ -824,7 +824,7 @@ a.more-link:hover {
 }
 
 .main-navigation ul ul ul.sub-menu {display: none;}
- 
+
 .main-navigation ul ul li:hover > ul.sub-menu {display: block;}
 .main-navigation ul li:hover li ul { top: -9999em }
 .main-navigation ul li li:hover ul {
@@ -837,11 +837,11 @@ a.more-link:hover {
 	border-bottom: 4px solid #CCC;
 	border-radius: 0.2em;
 }
- 
+
 .main-navigation ul ul li {
     float: right;
     line-height: 20px;
-    border:none!important;   
+    border:none!important;
 }
 .main-navigation ul ul li a {
     padding: 10px 26px;
@@ -871,7 +871,7 @@ a.more-link:hover {
 	border-top: 0;
 }
 .main-navigation ul ul li a i{ color: #9e9e9e!important;}
- 
+
 .main-navigation ul ul li:last-child a {border-bottom: none;border-left: none;}
 
 
@@ -1086,7 +1086,7 @@ body.woocommerce-page .title-container .page-title {
 	margin: 0 auto;
 	max-width: 1140px;
 	padding: 16px 6px;
-	text-align: center; 
+	text-align: center;
 }
 .entry-title {
 	font-size: 26px;
@@ -1119,7 +1119,7 @@ body.archive .page-title {
 }
 
 .entry-meta > span{
-	padding: 0.2em 0 0.2em 1em;	
+	padding: 0.2em 0 0.2em 1em;
 }
 
 .entry-meta i {
@@ -1465,7 +1465,7 @@ li.pingback {
 	font-size: 1.3rem;
 	margin: 1em 4.5em 0 0;
 }
-.comment .reply { 
+.comment .reply {
 	float:left;
 	margin:0 0 10px 10px;
 	text-align:center;
@@ -1474,7 +1474,7 @@ li.pingback {
 	padding:3px;
 	width:50px;
 }
-.reply:hover { 
+.reply:hover {
 	background-color:  #222;
 }
 .comment article {
@@ -1604,16 +1604,16 @@ p.nocomments {
 .site-footer .widget{
 	padding: 8px;
 }
-#smoothup { 
-	height: 50px; 
-	width: 50px; 
+#smoothup {
+	height: 50px;
+	width: 50px;
 	position:fixed;
 	bottom:10px;
 	left:20px;
 	display:none;
-	background: #000 no-repeat center; 
-	-webkit-transition-duration: 0.4s; 
-	-moz-transition-duration: 0.4s; transition-duration: 0.4s; 
+	background: #000 no-repeat center;
+	-webkit-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s; transition-duration: 0.4s;
 	border-radius: 2em;
 }
 #smoothup:before{
@@ -1629,7 +1629,7 @@ p.nocomments {
 	top: -2px;
 }
 #smoothup:hover {
-	background-color: #c59d5f; 
+	background-color: #c59d5f;
 }
 
 
@@ -1672,7 +1672,7 @@ p.nocomments {
 	color: #CCC;
 }
 .social-media a i {
-	font-size:1em;	
+	font-size:1em;
 }
 /* Cart Link
 ------------------------------------------------------- */
@@ -1942,7 +1942,7 @@ filter: alpha(opacity=90);
 }
 
 /* =========================
-	CONTACT TEMPLATE STYLES 
+	CONTACT TEMPLATE STYLES
 */
 
 #contact_respond textarea{
@@ -1967,15 +1967,15 @@ filter: alpha(opacity=90);
 .client {
 	text-align: center;
 }
-	
+
 .client h3{
 	font-weight: 100;
 	font-size: 2.6em;
 	color: #333;
-	font-size: 40px; 
-	padding: 0 0 12px; 
-	text-align: center; 
-	background: url(images/scribble.png ) no-repeat center bottom; 
+	font-size: 40px;
+	padding: 0 0 12px;
+	text-align: center;
+	background: url(images/scribble.png ) no-repeat center bottom;
 	margin: 0;
 	margin-bottom: 20px;
 }
@@ -1991,7 +1991,7 @@ filter: alpha(opacity=90);
 div.bbp-submit-wrapper{
 	float: none;
 }
-			
+
 /* CUSTOM HOMEPAGE LAYOUT */
 /*  SECTIONS  ============================================================================= */
 
@@ -2015,10 +2015,10 @@ div.bbp-submit-wrapper{
 	font-weight: 100;
 	font-size: 2.6em;
 	color: #333;
-	font-size: 40px; 
-	padding: 0 0 12px; 
-	text-align: center; 
-	background: url(images/scribble.png ) no-repeat center bottom; 
+	font-size: 40px;
+	padding: 0 0 12px;
+	text-align: center;
+	background: url(images/scribble.png ) no-repeat center bottom;
 	margin: 0;
 	margin-bottom: 20px;
 }
@@ -2167,30 +2167,30 @@ div.bbp-submit-wrapper{
 }
 
 /*  GRID OF EIGHT   ============================================================================= */
-	
+
 .span_8_of_8 {
 	width: 100%;
 }
 .span_7_of_8 {
-	width: 87.3%; 
+	width: 87.3%;
 }
 .span_6_of_8 {
-	width: 74.6%; 
+	width: 74.6%;
 }
 .span_5_of_8 {
-	width: 61.9%; 
+	width: 61.9%;
 }
 .span_4_of_8 {
-	width: 49.2%; 
+	width: 49.2%;
 }
 .span_3_of_8 {
 	width: 36.5%;
 }
 .span_2_of_8 {
-	width: 23.8%; 
+	width: 23.8%;
 }
 .span_1_of_8 {
-	width: 11.1%; 
+	width: 11.1%;
 }
 .header-image img {
 	width: 100%;
@@ -2302,17 +2302,17 @@ MEDIA QUERIES
 		width: 100%;
 		text-align: center;
 	}
-	
+
 	#topbar_container {
 		height:auto;
 		min-height: 40px;
 		border-bottom: 0;
 	}
-	
+
 	.topbar_content_left span {
 		display: inline-block;
 	}
-	
+
 	.site-introduction {
 		text-align: center;
 	}
@@ -2320,13 +2320,13 @@ MEDIA QUERIES
 
 /* for 980px or less */
 @media screen and (max-width: 980px) {
-	
+
 	#wrap {
 		padding:0;
-		width: 100%; 	
+		width: 100%;
 	}
 	#content {
-		padding-right:4px; 	
+		padding-right:4px;
 	}
 }
 
@@ -2373,27 +2373,27 @@ MEDIA QUERIES
 	.stickyHead.is-sticky{
 		position:relative;
 	}
-	
+
 	.authorlist {
 		width: 100%;
 		margin: 0;
 	}
-	
+
 	.featuretext_button a{
 		display:block;
 		margin:0 auto;
 		width:40%;
 	}
-	
+
 }
 
 /* for 600px or less */
 @media screen and (max-width: 600px) {
-	
+
 	#branding img {
 		display: none;
 	}
-	
+
 	.header-image {
 		width:100%;
 		margin-top: 0px;
@@ -2421,7 +2421,7 @@ MEDIA QUERIES
 		float: none;
 		margin: 0;
 	}
-	
+
 }
 
 /* --- IPhone5 (portrait and landscape) --- */
@@ -2451,19 +2451,19 @@ MEDIA QUERIES
 		text-align:left;
 		height:26px;
 		overflow:hidden;
-	
+
 		display: none;
 }
 	.social-media a, .social-media a:visited {
 		width:20px;
-		
+
 	}
-	
+
 	.header_container {
 		height: 100%;
 		width: 100%;
 	}
-	
+
 	.authorInfo{
 		width: 98%;
 
@@ -2472,8 +2472,8 @@ MEDIA QUERIES
 	.featuretext_button {
 		margin:0 auto 12px;
 	}
-	
-	
+
+
 }
 
 /* --- Smartphones (portrait and landscape) --- */
@@ -2486,39 +2486,39 @@ MEDIA QUERIES
 		padding-right: 4px;
 		width: 100%;
 	}
-	
+
 	.header_container {
 		height: 100%;
 		width: 100%;
 	}
 
 	.topbar_content_left span {
-		
+
 	}
 	.show-search {
 		position:absolute;
 		top:45px;
 		left:0;
 	}
-	
+
 	.featuretext_top h3{
 		font-size:1.2rem;
 		font-size:20px;
 		padding-bottom: 6px;
 	}
-	
+
 	.featuretext_button a{
 		padding: 6px;
 		font-size:1.2rem;
 		font-size:12px;
 	}
-	
+
 }
 
 /*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-	.col { 
+	.col {
 		margin: 1% 0% 1% 0;
 	}
 }
@@ -2548,35 +2548,35 @@ MEDIA QUERIES
 
 @media only screen and (max-width: 480px) {
 	.span_2_of_2 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_1_of_2 {
-		width: 100%; 
+		width: 100%;
 	}
 }
 
 /*  GRID OF THREE   ============================================================================= */
-	
+
 .span_3_of_3 {
-	width: 100%; 
+	width: 100%;
 }
 .span_2_of_3 {
-	width: 66.1%; 
+	width: 66.1%;
 }
 .span_1_of_3 {
-	width: 32.2%; 
+	width: 32.2%;
 }
 .recent_span_1_of_3 {
-	width: 33.33%; 
+	width: 33.33%;
 }
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 600px) {
 	.span_3_of_3 {
-		width: 99.6%; 
+		width: 99.6%;
 	}
 	.span_2_of_3 {
-		width: 99.6%; 
+		width: 99.6%;
 	}
 	.span_1_of_3 {
 		width: 99.6%;
@@ -2592,10 +2592,10 @@ MEDIA QUERIES
 
 @media only screen and (max-width: 480px) {
 	.span_3_of_3 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_2_of_3 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_1_of_3 {
 		width: 100%;
@@ -2604,33 +2604,33 @@ MEDIA QUERIES
 
 /*  GRID OF FOUR   ============================================================================= */
 
-	
+
 .span_4_of_4 {
-	width: 100%; 
+	width: 100%;
 }
 
 .span_3_of_4 {
-	width: 74.6%; 
+	width: 74.6%;
 }
 
 .span_2_of_4 {
-	width: 49.2%; 
+	width: 49.2%;
 }
 
 .span_1_of_4 {
-	width: 25%; 
+	width: 25%;
 }
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 800px) {
 	.span_4_of_4 {
-		width: 49.6%; 
+		width: 49.6%;
 	}
 	.span_3_of_4 {
-		width: 49.6%; 
+		width: 49.6%;
 	}
 	.span_2_of_4 {
-		width: 49.6%; 
+		width: 49.6%;
 	}
 	.span_1_of_4 {
 		width: 49.6%;
@@ -2642,16 +2642,16 @@ MEDIA QUERIES
 
 @media only screen and (max-width: 480px) {
 	.span_4_of_4 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_3_of_4 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_2_of_4 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_1_of_4 {
-		width: 100%; 
+		width: 100%;
 	}
 }
 
@@ -2659,28 +2659,28 @@ MEDIA QUERIES
 
 @media only screen and (max-width: 480px) {
 	.span_8_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_7_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_6_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_5_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_4_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_3_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_2_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 	.span_1_of_8 {
-		width: 100%; 
+		width: 100%;
 	}
 }
 

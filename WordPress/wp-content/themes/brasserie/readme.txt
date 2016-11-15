@@ -1,7 +1,7 @@
 Brasserie is a responsive, highly customizable WordPress theme that is fully compatible with WooCommerce.
 
-Theme Page: http://www.templateexpress.com/brasserie-theme/
-Theme Demo: http://www.templateexpress.com/demos/brasserie
+Theme Page: https://www.templateexpress.com/brasserie-theme/
+Theme Demo: http://demos.templateexpress.com/brasserie/
 Theme instructions: http://www.templateexpress.com/docs/brasserie/
 
 This theme takes advantage of these generous tools:
@@ -35,6 +35,19 @@ License URI: ?http://www.gnu.org/licenses/gpl-2.0.html
 
 Changelog
 --------------------------------------------
+Version 1.9.5
+* Fixed bug from previous update
+
+Version 1.9.4
+* Fixed issue with FontAwesome and Google Fonts
+
+Version 1.9.3
+* Removed deprecated tags
+
+Version 1.9.2
+* Removed broken customizer setting
+* Added wmpl-config.xml file for translation
+
 Version 1.9.1
 * Updated url's in this file for new docs and demo
 
