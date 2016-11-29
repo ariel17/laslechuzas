@@ -20,8 +20,6 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-//define('WP_CACHE', true); //Added by WP-Cache Manager
-define( 'WPCACHEHOME', '/home/laslechuzas/site/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_NAME', 'laslechuzas');
 
 /** MySQL database username */
@@ -48,17 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '[$`1[roKl+Cfeo}drR%xk(jLc:y&8{Hc$HIa-=&;+B+F.}D5BK|xUU@Eg-,8)-cg');
-define('SECURE_AUTH_KEY',  ']h<*B#lc_lH#kxJ!25q-I/EJfr[vM3pJ7q$k]hGmP@>Qyg `H}m1x@>|!n2M2G6.');
-define('LOGGED_IN_KEY',    'UO5+@L%Z~9wW~*&23Jz{`SA%&]l@Irq_|kF&h>.c?T*K?,Hg<?|UM@>i2L8G<,ZU');
-define('NONCE_KEY',        'f3}03=0:+}(OZj|7gT,&9wpFZI4d( L=gcAb0,^TGX*hZ[-<D _5fSyg|>|aKxjw');
-define('AUTH_SALT',        'i<S`X>64j$df{)et6<+c>vNf-PvPF+0FJC^|$|e;3]<5[VRV9T6|bjIE+7|8)ll#');
-define('SECURE_AUTH_SALT', 'UK<W/fv0&-GW~@k(8V6Jq:sy$r~cfrtK:=w+N4Z>` 0-NVy4O{fi,Dpy@/n@vm9b');
-define('LOGGED_IN_SALT',   'z-h[@w)y0jM/K5|Q$YjAH)Gt|m5vkxSt:ajpI5q__Kzk<ETZ +SGLZ:B&DV#z.Li');
-define('NONCE_SALT',       'SAjkzXidQmPm19lhvCyW+wt-!!2bK+DsR6@b{kT],qeb)DkW31N#R._l/I@l ?{~');
-
-
-/**#@-*/
+define('AUTH_KEY',         '5kiEb3A P77YS5B2+&h9IBr3e,T+Z{JGT@UK),G7MR-oBVZ]dGO@-cb3#--<4*|!');
+define('SECURE_AUTH_KEY',  'wyq0>ja{B}r+ACt,L!;|Cd6*+kYhd]k4v:s|}OSHIk.TzCOLfF;HYT(Vk*E3?5Lh');
+define('LOGGED_IN_KEY',    '45qcE^4}*UaK*qr?.Ju4Nw|:~~-+)g|4r?SOL$%,B3<xv+TnNLHU~eSuMxv=0|8F');
+define('NONCE_KEY',        '+(`kLlOw3]n955HJ<xR253^ha!EcEX)=Jnz&>,CD4Y&s,I;vbL-<f(|AM*i3>a=5');
+define('AUTH_SALT',        '^y0RRc[4-A{n,6%+)cHo+%D>m4/Bg skq0TKn2{a/g_=+(s1ht-7Ad+6%cgz6rtu');
+define('SECURE_AUTH_SALT', 'X]hl:O2G&LT-2<SLxbB_sV[C|tzS*^7oqAeU2fq[+3-[+TN|Y*7lRm`inoxQ*#TC');
+define('LOGGED_IN_SALT',   'aTh7#7 +0~VVo!Q%Pi4IPBf(@P a(;I;aeCT4cj<ndS7V=aOELdDlB9aq|t(@#+,');
+define('NONCE_SALT',       ':p*Q5?USBCF)Ai+n7w(xWB?vu:LaX~kP.IIg@USc^)+n@AUK2pT,{DRmDWmYv=+B');/**#@-*/
 
 /**
  * WordPress Database Table prefix.
@@ -80,7 +75,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -90,10 +85,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-
-/** Overwrite URL prefix for Vagrant instance */
-
-define('WP_HOME', 'http://www.laslechuzas.com.ar/');
-define('WP_SITEURL', 'http://www.laslechuzas.com.ar/');
-define('FS_METHOD', 'direct');

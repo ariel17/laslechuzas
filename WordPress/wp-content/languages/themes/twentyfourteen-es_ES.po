@@ -1,5 +1,5 @@
-# Translation of Themes - Twenty Fourteen in Spanish (Spain)
-# This file is distributed under the same license as the Themes - Twenty Fourteen package.
+# Translation of Twenty Fourteen in Spanish (Spain)
+# This file is distributed under the same license as the Twenty Fourteen package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2015-07-18 11:27:20+0000\n"
@@ -7,9 +7,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
-"Language: es\n"
-"Project-Id-Version: Themes - Twenty Fourteen\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Twenty Fourteen\n"
 
 #. Description of the plugin/theme
 msgid "In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier."
@@ -78,13 +77,13 @@ msgstr "Galerías"
 msgid "More links"
 msgstr "Más enlaces"
 
-#: inc/widgets.php:91 taxonomy-post_format.php:45
-msgid "Links"
-msgstr "Enlaces"
-
 #: inc/widgets.php:88
 msgid "More quotes"
 msgstr "Más citas"
+
+#: inc/widgets.php:91 taxonomy-post_format.php:45
+msgid "Links"
+msgstr "Enlaces"
 
 #: inc/widgets.php:87 taxonomy-post_format.php:42
 msgid "Quotes"
@@ -206,13 +205,13 @@ msgstr "Usa una <a href=\"%1$s\">etiqueta</a> para destacar tus entradas. Si nin
 msgid "Featured Content"
 msgstr "Contenido destacado"
 
-#: inc/customizer.php:47 inc/customizer.php:48
-msgid "Background may only be visible on wide screens."
-msgstr "El fondo solo será visible en pantallas anchas."
-
 #: inc/customizer.php:44 inc/customizer.php:45
 msgid "May only be visible on wide screens."
 msgstr "Puede que sólo sea visible en pantallas anchas."
+
+#: inc/customizer.php:47 inc/customizer.php:48
+msgid "Background may only be visible on wide screens."
+msgstr "El fondo solo será visible en pantallas anchas."
 
 #: inc/customizer.php:40
 msgid "Display Site Title &amp; Tagline"
