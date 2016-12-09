@@ -25,6 +25,8 @@ services:
       WP_DEBUG: "true"
     volumes:
       - "./WordPress:/srv/laslechuzas/www/WordPress"
+      - "./conf/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro"
+      - "./conf/php-mail.conf:/usr/local/etc/php/conf.d/mail.ini:ro"
     links:
       - db:db
   
