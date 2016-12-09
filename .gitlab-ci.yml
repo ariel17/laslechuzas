@@ -1,0 +1,19 @@
+image: singularmentor/python-ci:latest
+
+before_script:
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - echo "Host production" > ~/.ssh/config
+  - echo "    HostName $PRODUCTION_SERVER" >> ~/.ssh/config
+  - echo "    User $PRODUCTION_USERNAME" >> ~/.ssh/config
+  - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - ssh production "cd $PRODUCTION_PATH && git pull"
+
