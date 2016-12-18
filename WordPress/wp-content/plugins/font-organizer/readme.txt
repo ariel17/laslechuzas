@@ -1,9 +1,9 @@
 === Font Organizer ===
 Contributors: hivewebstudios,basaar,yardensade
 Tags: fonts,google fonts,upload font,font,google
-Requires at least: 3.0.1
-Tested up to: 4.6.1
-Stable tag: 1.1.0
+Requires at least: 3.8
+Tested up to: 4.7
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ them to different elements in your website effortlessly.
 
 Want to find out more? go to [our website](https://hivewebstudios.com/ "HiveWebStudios website") and find out more from us.
 
-Want to try us? Use [Addendio's](https://Addendio.com/ "Addendio's website") [Font Organizer live demo](https://addendio.com/try-plugin/?slug=font-organizer "live demo")!
+Want to try us? Use Addendio's [Font Organizer live demo](https://addendio.com/try-plugin/?slug=font-organizer "live demo")!
 
 Key Features:
 
@@ -26,6 +26,10 @@ Key Features:
 * Multi upload allow you to upload more font formats to support more browsers.
 * Add any google fonts in one click and apply them on any element.
 * Apply fonts for known elements or custom elements of your choosing easily.
+* Delete and remove fonts from your website in one click.
+* Choose your fonts & font sizes in the editor (tinyMCE & tinyMCE Advanced).
+* Our code is extremely clean, well written, and optimized for maximum performance for your website.
+* Full support for language translation, including RTL languages.
 * It's awesome like its users.
 
 == Installation ==
@@ -57,8 +61,9 @@ There you go, google generated a brand new API key for you.
 Copy the entire key and paste it on the designated place in the plugin settings.
 
 In order to enable the API key go to API Manager dashboard or use the link: "https://console.developers.google.com/apis/dashboard"
-Press "ENABLE API", Then Choose "Web Fonts Developer API" under "Other popular APIs" section.
+Press "ENABLE API", Then Choose "Web Fonts Developer API" under "Other popular APIs" section. - This step is a must.
 
+Congrats, your API key is now enabled.
 
 Q: What the option "Show Font Family Preview" means?
 
@@ -70,6 +75,23 @@ Q: What the option "Access Settings Role" means?
 
 A: We wanted to give you the option to decide which roles in your wordpress website are allowed to use the plugin, so you may or may not allow other users with access to the website the ability to use the plugin.
 
+Q: Why can't I see assigned fonts even after I have done everything correctly?
+
+A: Sometimes some browsers save a cached version of the page when browsing it to display it faster.
+If you can't see a new font you have assigned, make sure to clean the cache using Shift+F5 to clean the current page, or Ctrl+Shift+Delete to clean all. (Some websites might use cache plugin that must be refreshed before)
+
+Q: I have some element in the website - and the font would not change for it, what do I do?
+
+A: In some cases some elements are assigned with fonts in a very specific ways via other plugins or themes, and thus you will need to target those elements using CSS id or class, in section 4 of the plugin "Custom Elements Settings".
+If you have absolutley no knowledge of what is CSS, you might need help of a webmaster.
+
+Q: I have bought a font and it came with many font weights, what is the best way to upload all of them using the plugin?
+
+A: Each upload process at the moment is used for 1 font weight only.
+Uploading more then 1 font weight is done by doing the upload process several times, once for each font weight.
+When uploading the font weight you should write its weight in the font name.
+Example: "Arial Bold" or "Arial Italic", so you could easily use them later in the plugin.
+
 == Screenshots ==
 
 1. Choosing Google & uploading fonts in just 1 step.
@@ -78,6 +100,17 @@ A: We wanted to give you the option to decide which roles in your wordpress webs
 4. General settings & role restictions.
 
 == Changelog ==
+
+= 1.2.0 =
+* Added fonts in your website and font sizes selection in the editor (tinyMCE & tinyMCE Advanced).
+* Added option to delete of fonts in your website in section 5.
+* Added validation in required fields.
+* Added link to FAQs in Google API key field.
+* Added support Wordpress 4.7 version.
+* Fixed PHP 7 requirment.
+* Added more FAQs.
+* Fixed a few minor bugs.
+* Better usability and general guiding.
 
 = 1.1.0 =
 * Added Multi-upload to upload more formats per font to support more browsers.

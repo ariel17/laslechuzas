@@ -2259,7 +2259,7 @@
 				} else if ( $oldSubTitle.length ) {
 					$oldSubTitle.replaceWith( $subTitle );
 				} else {
-					$( '.wp-header-end' ).before( $subTitle );
+					$( '.wrap h1' ).append( $subTitle );
 				}
 
 				$( 'body' ).removeClass( 'loading-content' );

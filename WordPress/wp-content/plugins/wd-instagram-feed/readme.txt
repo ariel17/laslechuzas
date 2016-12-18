@@ -4,7 +4,7 @@ Donate link: https://web-dorado.com/products/wordpress-instagram-feed-wd.html
 Tags: : custom instagram feed, feed, instagram, hashtag, Instagram feed, instagram gallery, instagram posts, Instagram images, Instagram photos, Instagram wall, lightbox, photos
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.1.17
+Stable tag: 1.1.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Instagram Feed WD plugin  is a user-friendly tool for displaying user or hashtag
 
 https://www.youtube.com/watch?v=ijdrpkVAfEw
 
-Have you ever wanted to display images from Instagram on your webpages? Is simple integration not enough for your WordPress website? Do you want to display composite feeds of hashtags and users? Do you prefer to show instagram content with your custom styling? Have you ever thought it will be cool to repost your Instagram feed to WP blog? Instagram Feed WD is your best solution with its user-friendly management and easy set up. It is simply the most useful and functional WordPress Instagram plugin.
+Have you ever wanted to display images from Instagram on your webpages? Is simple integration not enough for your WordPress website? Do you want to display composite feeds of hashtags and users? Do you prefer to show instagram gallery with your custom styling? Have you ever thought it will be cool to repost your Instagram feed to WP blog? Instagram Feed WD is your best solution with its user-friendly management and easy set up. It is simply the most useful and functional WordPress Instagram plugin.
 
 Instagram Feed WD allows displaying Instagram feeds based on public Instagram accounts and hashtags. You can create mixed feeds based on multiple accounts, multiple hashtags or any combination of both with Pro version.  WordPress Instagram plugin uses 4 layouts - 2 layouts for smaller thumbnail display  (Thumbnail and Masonry) and 2 for larger images (Blog Style and Image Browser). Thumbnail view displays images with their metadata (Pro): caption, number of likes and comments. Image Browser displays single image with navigation possibility, metadata (Pro): image caption, number of likes and comments. Masonry (Pro) layout displays images in beautiful masonry view combining the image and its metadata (Pro). Blog Style (Pro) layout combines large image with  its data similar creating a blog style display. All the layouts can display feed username and its metadata (bio, number of posts and followers).
 
@@ -31,7 +31,7 @@ Images can be redirected to Instagram or opened in a lightbox. You can set sorti
 
 Theme section (available with Pro version) allows to customize colors, sizes and display styles. Each layout uses its own theme which makes this section even more compelling.
 
-No feed data is stored in the database. All the images, videos (Pro), captions and comments  are retrieved directly from the Instagram in the front-end, which makes this WordPress Instagram plugin fast and very easy to use.
+No feed data is stored in the database. All the images, videos (Pro), captions and comments  are retrieved directly from the Instagram in the front-end, which makes this WordPress Instagram gallery plugin fast and very easy to use.
 
 
 ###IMPORTANT:    
@@ -106,6 +106,11 @@ After downloading the ZIP file of the Instagram Feed WD plugin,
 5.  WordPress Instagram Feed WD - Theme Settings   
 
 == Changelog ==
+
+
+= 1.1.18 =
+Fixed: Frontend filter colors (PRO)   
+Changed: Featured plugins, brand new Mailchimp Forms WD plugin added    
 
 = 1.1.17 =
 New: Option in feed settings to show small size images and low-bandwidth videos when viewed in mobile devices    
