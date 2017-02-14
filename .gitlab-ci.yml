@@ -1,7 +1,4 @@
-image: ubuntu
-
-before_script:
-  - apt-get install curl -y
+image: tutum/curl:latest
 
 stages:
   - deploy
