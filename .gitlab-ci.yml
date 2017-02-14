@@ -6,4 +6,4 @@ stages:
 trigger_build:
   stage: deploy
   script:
-    - "curl -X POST -F token=TOKEN -F ref=REF_NAME https://gitlab.singularmentor.com.ar/api/v3/projects/81/trigger/builds"
+    - "curl -X POST -F token=$TRIGGER_TOKEN -F ref=$TRIGGER_REF_NAME https://gitlab.singularmentor.com.ar/api/v3/projects/81/trigger/builds"
