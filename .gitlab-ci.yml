@@ -1,5 +1,8 @@
 image: ubuntu
 
+before_script:
+  - apt-get install curl -y
+
 stages:
   - deploy
 
